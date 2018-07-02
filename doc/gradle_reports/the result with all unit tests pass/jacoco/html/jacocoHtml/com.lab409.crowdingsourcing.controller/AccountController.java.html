@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccountController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.controller</a> &gt; <span class="el_source">AccountController.java</span></div><h1>AccountController.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.controller;
+
+import com.lab409.crowdingsourcing.dto.*;
+import com.lab409.crowdingsourcing.entity.*;
+import com.lab409.crowdingsourcing.repository.*;
+import com.lab409.crowdingsourcing.service.*;
+import com.lab409.crowdingsourcing.util.ResJsonTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+
+@RestController
+@RequestMapping(value = &quot;api&quot;)
+<span class="fc" id="L23">public class AccountController {</span>
+
+    @Autowired
+    private AccountRepository accountRepository;
+
+    @Autowired
+    private ProjectExperienceRepository projectExperienceRepository;
+
+    @Autowired
+    private AccountService accountService;
+
+    @Autowired
+    private UserInfoDetailService userInfoDetailService;
+
+    @Autowired
+    private DevEnrollInfoRepository devEnrollInfoRepository;
+    @Autowired
+    private ProjectExperienceService projectExperienceService;
+
+    @Autowired
+    private ProjectService projectService;
+
+    @Autowired
+    private RequirementService requirementService;
+    @Autowired
+    private TestRepository testRepository;
+
+    @RequestMapping(value = &quot;/all/account&quot;, method = RequestMethod.GET)
+    public ResJsonTemplate showAllAccount(HttpServletRequest request){
+<span class="nc" id="L52">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L54">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        if (account.getRole_id() != 999){</span>
+<span class="nc" id="L57">            return new ResJsonTemplate&lt;&gt;(&quot;400&quot;, &quot;无此权限&quot;);</span>
+        }
+<span class="nc" id="L59">        List&lt;Account&gt; accountList = accountRepository.findAll();</span>
+<span class="nc" id="L60">        return new ResJsonTemplate&lt;&gt;(&quot;200&quot;,accountList);</span>
+    }
+
+    @RequestMapping(value = &quot;/account/{username}&quot;, method = RequestMethod.GET)
+    public ResJsonTemplate getAnAccount(HttpServletRequest request,@PathVariable String username){
+<span class="nc" id="L65">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L67">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        if (account.getRole_id() != 999){</span>
+<span class="nc" id="L70">            return new ResJsonTemplate&lt;&gt;(&quot;400&quot;, &quot;无此权限&quot;);</span>
+        }
+<span class="nc" id="L72">        Account accountInfo = accountRepository.findByUsername(username);</span>
+<span class="nc" id="L73">        return new ResJsonTemplate&lt;&gt;(&quot;200&quot;,accountInfo);</span>
+    }
+    @RequestMapping(value = &quot;/test&quot;)
+    public ResJsonTemplate&lt;List&lt;Project&gt;&gt; test(@RequestParam String name){
+<span class="nc" id="L77">        return new ResJsonTemplate&lt;&gt;(&quot;200&quot;,testRepository.findByEmailAddress(name));</span>
+    }
+
+    @RequestMapping(value = &quot;/accountAndExperience&quot;, method = RequestMethod.GET)
+    public ResJsonTemplate accountAndExperience(@RequestParam(value = &quot;username&quot;) String username){
+<span class="nc" id="L82">        Account account = accountRepository.findByUsername(username);</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        if(account == null){</span>
+<span class="nc" id="L84">            return new ResJsonTemplate&lt;&gt;(&quot;400&quot;,&quot;无此用户&quot;);</span>
+        }
+<span class="nc" id="L86">        List&lt;ProjectExperience&gt; projectExperienceList = projectExperienceRepository.findByAccountId(account.getAccount_id());</span>
+<span class="nc" id="L87">        AccountAndExperience accountAndExperience = new AccountAndExperience(account.getName(),account.getAccount_id(),</span>
+<span class="nc" id="L88">                account.getMobile(),account.getEmail(),projectExperienceList);</span>
+<span class="nc" id="L89">        return new ResJsonTemplate&lt;&gt;(&quot;200&quot;,accountAndExperience);</span>
+    }
+    /**
+     * 更新用户账户信息
+     * @param request
+     * @param email
+     * @param mobile
+     * @param name
+     * @return
+     */
+    @RequestMapping(value = &quot;/account&quot;, method = RequestMethod.POST)
+    public ResJsonTemplate updateAccount(HttpServletRequest request, @RequestParam(value = &quot;email&quot;) String email,
+                                         @RequestParam(value = &quot;mobile&quot;) String mobile, @RequestParam(value = &quot;name&quot;) String name){
+<span class="nc" id="L102">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L104">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L106">        account.setEmail(email);</span>
+<span class="nc" id="L107">        account.setMobile(mobile);</span>
+<span class="nc" id="L108">        account.setName(name);</span>
+<span class="nc" id="L109">        return accountService.updateInfo(account);</span>
+    }
+    /**
+     * login
+     * @param accountInfo 以username和password为属性的json
+     * @return 如果登陆成功则返回(&quot;200&quot;,accountDetail)
+     *          如果失败则返回(&quot;404&quot;,&quot;unauthorized&quot;)
+     */
+    @RequestMapping(value = &quot;/session&quot;, method = RequestMethod.POST)
+    public ResJsonTemplate&lt;Object&gt; createAuthenticationToken(@RequestBody AccountInfo accountInfo){
+<span class="nc" id="L119">        return accountService.login(accountInfo);</span>
+    }
+
+    /**
+     * 实名认证
+     * @param request 获取header中的tokenID进行身份验证
+     * @param userInfoDetail 添加身份认证的信息
+     * @return token验证失败则（404，unauthorized）成功则（200，&quot;实名认证成功&quot;）
+     */
+    @RequestMapping(value = &quot;/user/verification&quot;, method = RequestMethod.POST)
+    public ResJsonTemplate UserInfoVerifacation(
+            HttpServletRequest request, @RequestBody UserInfoDetail userInfoDetail) {
+<span class="nc" id="L131">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L133">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L135">        return userInfoDetailService.addUserInfoDetail(account,userInfoDetail);</span>
+    }
+
+    /**
+     * 新增项目经历
+     * @param request token验证
+     * @param file
+     * @param project_name
+     * @param project_region
+     * @param project_address
+     * @param project_text
+     * @return
+     */
+    @RequestMapping(value = &quot;/user/projectExperience&quot;, method = RequestMethod.POST)
+    public ResJsonTemplate developerSkill(
+            HttpServletRequest request, @RequestParam(value = &quot;certificate&quot;, required = false) MultipartFile file,
+            @RequestParam(value = &quot;project_name&quot;) String project_name,
+            @RequestParam(value = &quot;project_region&quot;) String project_region,
+            @RequestParam(value = &quot;project_address&quot;) String project_address,
+            @RequestParam(value = &quot;project_text&quot;) String project_text
+    ) throws IOException {
+<span class="nc" id="L156">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L158">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L160">        return projectExperienceService.addExperience(account,</span>
+                file,
+                project_name,
+                project_region,
+                project_address,
+                project_text);
+    }
+
+    /**
+     * 更新项目经历
+     * @param request token验证
+     * @param file
+     * @param project_name
+     * @param project_region
+     * @param project_address
+     * @param project_text
+     * @return
+     */
+    @RequestMapping(value = &quot;/user/projectExperience&quot;, method = RequestMethod.PUT)
+    public ResJsonTemplate updateDeveloperSkill(
+            HttpServletRequest request, @RequestParam(value = &quot;certificate&quot;, required = false) MultipartFile file,
+            @RequestParam(value = &quot;project_id&quot;) int project_id,
+            @RequestParam(value = &quot;project_name&quot;) String project_name,
+            @RequestParam(value = &quot;project_region&quot;) String project_region,
+            @RequestParam(value = &quot;project_address&quot;) String project_address,
+            @RequestParam(value = &quot;project_text&quot;) String project_text
+    ) throws IOException {
+<span class="nc" id="L187">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L188" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L189">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L191">        return projectExperienceService.updateExperience(account,</span>
+                file,
+                project_name,
+                project_region,
+                project_address,
+                project_text,
+                project_id);
+    }
+
+
+    /**
+     * 获取项目经历
+     * @param request
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = &quot;/user/projectExperience&quot;, method = RequestMethod.GET)
+    public ResJsonTemplate getDeveloperSkill(HttpServletRequest request)throws IOException
+    {
+<span class="nc" id="L210">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L211" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L212">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L214">        return projectExperienceService.getExperience(account);</span>
+    }
+
+    /**
+     * 新增需求
+     * @param request
+     * @param requirement_name
+     * @param requirement_type
+     * @param need_manager
+     * @param start_time
+     * @param end_time
+     * @param requirement_detail
+     * @param file
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = &quot;/requirement&quot;, method = RequestMethod.POST)
+    public ResJsonTemplate createRequirement(
+            HttpServletRequest request,
+            @RequestParam(value = &quot;requirement_name&quot;) String requirement_name,
+            @RequestParam(value = &quot;requirement_type&quot;) String requirement_type,
+            @RequestParam(value = &quot;need_manager&quot;) int need_manager,
+            @RequestParam(value = &quot;start_time&quot;) @DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;) Date start_time,
+            @RequestParam(value = &quot;end_time&quot;) @DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;) Date end_time,
+            @RequestParam(value = &quot;requirement_detail&quot;) String requirement_detail,
+            @RequestParam(value = &quot;file&quot;, required = false) MultipartFile file,
+            @RequestParam(value = &quot;project_id&quot;) int project_id) throws IOException {
+<span class="nc" id="L241">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L242" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L243">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L245">        return  requirementService.addRequirement(account,requirement_name,</span>
+                requirement_type,
+                need_manager,
+                start_time,
+                end_time,
+                requirement_detail,
+                file,
+                project_id);
+    }
+
+    /**
+     * 获取需求
+     * @param request
+     * @return
+     */
+    @RequestMapping(value= &quot;/requirement&quot;,method=RequestMethod.GET)
+    public ResJsonTemplate getRequirement(HttpServletRequest request)
+    {
+<span class="nc" id="L263">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L264" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L265">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L267">        return  requirementService.getReuirement(account);</span>
+    }
+
+    /**
+     * 删除需求
+     * @param request
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = &quot;/requirement/{id}&quot;, method = RequestMethod.DELETE)
+    public ResJsonTemplate DeteleRequirement(HttpServletRequest request, @PathVariable Long id) {
+<span class="nc" id="L278">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L279" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L280">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L282">        Requirement requirement = requirementService.getRequirement(id);</span>
+<span class="nc bnc" id="L283" title="All 2 branches missed.">        if (requirement == null){</span>
+<span class="nc" id="L284">            return new ResJsonTemplate&lt;&gt;(&quot;400&quot;,&quot;无此项目&quot;);</span>
+        }
+<span class="nc" id="L286">        projectService.deleteProject(requirement.getProjectId());</span>
+<span class="nc" id="L287">        return requirementService.deleteRequirement(id);</span>
+    }
+
+    /**
+     * 删除项目经历
+     * @param request
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = &quot;/projectExperience/{id}&quot;, method = RequestMethod.DELETE)
+    public ResJsonTemplate&lt;String&gt; deteleExperience(HttpServletRequest request, @PathVariable Long id) {
+<span class="nc" id="L298">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L299" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L300">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L302">        ProjectExperience projectExperience = projectExperienceRepository.findById(id);</span>
+<span class="nc bnc" id="L303" title="All 2 branches missed.">        if(projectExperience == null){</span>
+<span class="nc" id="L304">            return new ResJsonTemplate&lt;&gt;(&quot;400&quot;, &quot;无此项目经历&quot;);</span>
+        }
+<span class="nc bnc" id="L306" title="All 2 branches missed.">        if(!projectExperience.getAccountId().equals(account.getAccount_id())){</span>
+<span class="nc" id="L307">            return new ResJsonTemplate&lt;&gt;(&quot;401&quot;,&quot;无此权限&quot;);</span>
+        }
+<span class="nc" id="L309">        projectExperienceRepository.delete(projectExperience);</span>
+<span class="nc" id="L310">        return new ResJsonTemplate&lt;&gt;(&quot;200&quot;,&quot;删除成功&quot;);</span>
+
+    }
+
+    /**
+     * 更新需求
+     * @param request
+     * @param requirement_name
+     * @param requirement_type
+     * @param need_manager
+     * @param start_time
+     * @param end_time
+     * @param requirement_detail
+     * @param file
+     * @param id
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = &quot;/updateRequirement/{id}&quot;, method = RequestMethod.POST)
+    public ResJsonTemplate UpdateRequirement(HttpServletRequest request,
+                                             @RequestParam(value = &quot;requirement_name&quot;) String requirement_name,
+                                             @RequestParam(value = &quot;requirement_type&quot;) String requirement_type,
+                                             @RequestParam(value = &quot;need_manager&quot;) int need_manager,
+                                             @RequestParam(value = &quot;start_time&quot;) @DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;) Date start_time,
+                                             @RequestParam(value = &quot;end_time&quot;) @DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;) Date end_time,
+                                             @RequestParam(value = &quot;requirement_detail&quot;) String requirement_detail,
+                                             @RequestParam(value = &quot;file&quot;, required = false) MultipartFile file,
+                                             @PathVariable Long id,
+                                             @RequestParam(value = &quot;requirement_state&quot;) int state) throws IOException {
+
+
+<span class="nc" id="L341">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L342" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L343">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L345">        return  requirementService.updateRequirement(account,id,requirement_name,</span>
+                requirement_type,
+                need_manager,
+                start_time,
+                end_time,
+                requirement_detail,
+                file,
+                state);
+    }
+
+    //获取详细需求
+    @RequestMapping(value = &quot;/requirement/{id}&quot;, method = RequestMethod.GET)
+    public ResJsonTemplate GetRequirementDetail(HttpServletRequest request, @PathVariable Long id) {
+//        Account account = accountService.getAccount(request);
+//        if (account == null) {
+//            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);
+//        }
+<span class="nc" id="L362">        Requirement requirement = requirementService.getRequirement(id);</span>
+<span class="nc" id="L363">        List&lt;DevEnrollInfo&gt; devEnrollInfos = devEnrollInfoRepository.findByProjectId(requirement.getProjectId());</span>
+<span class="nc bnc" id="L364" title="All 2 branches missed.">        if(devEnrollInfos == null){</span>
+<span class="nc" id="L365">            devEnrollInfos = new LinkedList&lt;&gt;();</span>
+<span class="nc" id="L366">            return new ResJsonTemplate&lt;&gt;(&quot;200&quot;,devEnrollInfos);</span>
+        }
+<span class="nc" id="L368">        List&lt;DeveloperDto&gt; developerDtos = new LinkedList&lt;&gt;();</span>
+<span class="nc" id="L369">        List&lt;Account&gt; accounts = new LinkedList&lt;&gt;();</span>
+<span class="nc bnc" id="L370" title="All 2 branches missed.">        for (DevEnrollInfo devEnrollInfo : devEnrollInfos) {</span>
+<span class="nc" id="L371">            accounts.add(accountRepository.findByUsername(devEnrollInfo.getUsername()));</span>
+<span class="nc" id="L372">        }</span>
+<span class="nc bnc" id="L373" title="All 2 branches missed.">        for (Account account : accounts) {</span>
+<span class="nc" id="L374">            developerDtos.add(new DeveloperDto(account.getUsername(),account.getEmail(),account.getMobile()));</span>
+<span class="nc" id="L375">        }</span>
+<span class="nc" id="L376">        ReuireAndDeveloperDto reuireAndDeveloperDto = new ReuireAndDeveloperDto();</span>
+<span class="nc" id="L377">        reuireAndDeveloperDto.setDeveloperList(developerDtos);</span>
+<span class="nc" id="L378">        reuireAndDeveloperDto.setRequirement(requirement);</span>
+<span class="nc" id="L379">        return new ResJsonTemplate&lt;&gt;(&quot;200&quot;, reuireAndDeveloperDto);</span>
+    }
+
+    //报名加入项目
+    @RequestMapping(value = &quot;/requirement/{id}/enroll&quot;, method = RequestMethod.POST)
+    public ResJsonTemplate EnrollProject(HttpServletRequest request, @PathVariable Long id) {
+<span class="nc" id="L385">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L386" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L387">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L389">        Requirement requirement = requirementService.getRequirement(id);</span>
+<span class="nc bnc" id="L390" title="All 2 branches missed.">        if(requirement!=null)</span>
+        {
+<span class="nc bnc" id="L392" title="All 2 branches missed.">            if(Objects.equals(requirement.getCreatorId(), account.getAccount_id()))</span>
+            {
+<span class="nc" id="L394">                return new ResJsonTemplate&lt;&gt;(&quot;400&quot;,&quot;该项目为自己创建，不能报名&quot;);</span>
+            }
+<span class="nc" id="L396">            id = requirement.getProjectId();</span>
+<span class="nc" id="L397">            DevEnrollInfo devEnrollInfo = new DevEnrollInfo(account.getUsername(), id);</span>
+<span class="nc" id="L398">            return requirementService.addEnrollInfo(devEnrollInfo);</span>
+        }
+        else
+        {
+<span class="nc" id="L402">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;项目不存在&quot;);</span>
+        }
+    }
+
+    //获取所有需求
+    @RequestMapping(value = &quot;/requirements&quot;, method = RequestMethod.GET)
+    public ResJsonTemplate getRequirement() {
+<span class="nc" id="L409">        return requirementService.getRequirement();</span>
+    }
+
+    //获取账号报名的项目
+    @RequestMapping(value = &quot;/project&quot;, method = RequestMethod.GET)
+    public ResJsonTemplate getProjectList(HttpServletRequest request) {
+<span class="nc" id="L415">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L416" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L417">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L419">        return projectService.getProjectList(account.getUsername());</span>
+//        return requirementService.getMyRequirement(account);
+        // return projectService.getProjectList(account.getUsername());
+    }
+
+    //注册
+    @RequestMapping(value = &quot;/register&quot;, method = RequestMethod.POST)
+    public ResJsonTemplate register(@RequestBody LoginAccountDto addedUser) {
+<span class="nc" id="L427">        return accountService.register(addedUser);</span>
+    }
+//
+//    @PreAuthorize(&quot;hasRole('user')&quot;)
+//    @RequestMapping(value = &quot;/&quot;, method = RequestMethod.GET)
+//    public Account getUserByUsername(@RequestParam(value = &quot;username&quot;) java.lang.String username) {
+//        return accountRepository.findByUsername(username);
+//    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

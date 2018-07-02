@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProjectExperienceServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.service.impl</a> &gt; <span class="el_source">ProjectExperienceServiceImpl.java</span></div><h1>ProjectExperienceServiceImpl.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.service.impl;
+
+import com.lab409.crowdingsourcing.entity.Account;
+import com.lab409.crowdingsourcing.entity.ProjectExperience;
+import com.lab409.crowdingsourcing.repository.ProjectExperienceRepository;
+import com.lab409.crowdingsourcing.service.ProjectExperienceService;
+import com.lab409.crowdingsourcing.util.ResJsonTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
+
+/**
+ * Created by jieping on 2017-05-24.
+ */
+@Service
+<span class="fc" id="L19">public class ProjectExperienceServiceImpl implements ProjectExperienceService{</span>
+    @Autowired
+    private ProjectExperienceRepository projectExperienceRepository;
+    @Override
+    public ResJsonTemplate addExperience(Account account,
+                                         MultipartFile file,
+                                         String project_name,
+                                         String project_region,
+                                         String project_address,
+                                         String project_text) throws IOException {
+<span class="nc" id="L29">        ProjectExperience projectExperience = new ProjectExperience();</span>
+<span class="nc" id="L30">        projectExperience.setAccountId(account.getAccount_id());</span>
+<span class="nc" id="L31">        projectExperience.setProjectAddress(project_address);</span>
+<span class="nc" id="L32">        projectExperience.setProjectName(project_name);</span>
+<span class="nc" id="L33">        projectExperience.setProjectRegion(project_region);</span>
+<span class="nc" id="L34">        projectExperience.setProjectText(project_text);</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        if (file != null) {</span>
+<span class="nc" id="L36">            byte[] data = new byte[file.getInputStream().available()];</span>
+<span class="nc" id="L37">            file.getInputStream().read(data);</span>
+<span class="nc" id="L38">            projectExperience.setCertificate(data);</span>
+        }
+
+<span class="nc" id="L41">        ProjectExperience temp = projectExperienceRepository.save(projectExperience);</span>
+<span class="nc" id="L42">        return new ResJsonTemplate(&quot;201&quot;, temp);</span>
+    }
+
+    @Override
+    public ResJsonTemplate getExperience(Account account) {
+<span class="nc" id="L47">       List&lt;ProjectExperience&gt; target = projectExperienceRepository.findByAccountId(account.getAccount_id());</span>
+<span class="nc" id="L48">        return new ResJsonTemplate(&quot;200&quot;,target);</span>
+
+    }
+
+    @Override
+    public ResJsonTemplate updateExperience(Account account, MultipartFile file,
+                                            String project_name, String project_region, String project_address, String project_text, int projecr_id) {
+<span class="nc" id="L55">        ProjectExperience projectExperience = new ProjectExperience();</span>
+<span class="nc" id="L56">        projectExperience.setAccountId(account.getAccount_id());</span>
+<span class="nc" id="L57">        projectExperience.setProjectAddress(project_address);</span>
+<span class="nc" id="L58">        projectExperience.setProjectName(project_name);</span>
+<span class="nc" id="L59">        projectExperience.setProjectRegion(project_region);</span>
+<span class="nc" id="L60">        projectExperience.setProjectText(project_text);</span>
+<span class="nc" id="L61">        projectExperience.setId((long) projecr_id);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if (file != null) {</span>
+<span class="nc" id="L63">            byte[] data = new byte[0];</span>
+            try {
+<span class="nc" id="L65">                data = new byte[file.getInputStream().available()];</span>
+<span class="nc" id="L66">                file.getInputStream().read(data);</span>
+<span class="nc" id="L67">                projectExperience.setCertificate(data);</span>
+<span class="nc" id="L68">            } catch (IOException e) {</span>
+<span class="nc" id="L69">                e.printStackTrace();</span>
+<span class="nc" id="L70">            }</span>
+        }
+
+<span class="nc" id="L73">        ProjectExperience temp = projectExperienceRepository.save(projectExperience);</span>
+<span class="nc" id="L74">        return new ResJsonTemplate(&quot;201&quot;, temp);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

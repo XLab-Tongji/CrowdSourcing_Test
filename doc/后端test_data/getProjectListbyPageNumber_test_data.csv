@@ -1,0 +1,17 @@
+start,size,expectation
+-10000,-1,"wrong start point, can not be minus"
+-10000,800,"wrong start point, can not be minus"
+-10000,9392,"wrong start point, can not be minus"
+-10000,46,"wrong start point, can not be minus"
+242,-1,wrong size
+242,800,beyond size
+242,9392,size is too large
+242,46,success
+5,-1,wrong size
+5,800,success
+5,9392,size is too large
+5,46,success
+75,-1,wrong size
+75,800,success
+75,9392,size is too large
+75,46,success

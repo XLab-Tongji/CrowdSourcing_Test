@@ -1,0 +1,11 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,Latency,IdleTime,Connect
+1529992793095,15542,HTTP Request,500,,Thread Group 1-31,text,false,,739,134,58,58,15540,0,1
+1529992793090,15549,HTTP Request,500,,Thread Group 1-38,text,false,,739,134,57,57,15549,0,2
+1529992793011,15631,HTTP Request,500,,Thread Group 1-66,text,false,,739,134,56,56,15630,0,2
+1529992793089,15559,HTTP Request,500,,Thread Group 1-39,text,false,,739,134,54,54,15558,0,1
+1529992793077,15625,HTTP Request,500,,Thread Group 1-104,text,false,,739,134,53,53,15625,0,1
+1529992793082,15632,HTTP Request,500,,Thread Group 1-106,text,false,,739,134,52,52,15632,0,2
+1529992793198,15522,HTTP Request,500,,Thread Group 1-153,text,false,,739,134,51,51,15522,0,2
+1529992793072,15777,HTTP Request,500,,Thread Group 1-55,text,false,,739,134,45,45,15777,0,2
+1529992793087,15854,HTTP Request,500,,Thread Group 1-41,text,false,,739,134,42,42,15854,0,2
+1529992793194,15792,HTTP Request,500,,Thread Group 1-74,text,false,,739,134,38,38,15791,0,1

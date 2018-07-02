@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Project.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.entity</a> &gt; <span class="el_source">Project.java</span></div><h1>Project.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.entity;
+
+import javax.persistence.*;
+import java.io.File;
+import java.util.Date;
+
+/**
+ * Created by SHIKUN on 2016/9/12.
+ */
+@Entity
+@Table(name = &quot;project&quot;)
+public class Project {
+    @Id
+    @GeneratedValue
+    @Column(name = &quot;project_id&quot;)
+    private Long projectId;
+
+    private double cost;
+
+    private int deliveryCycle;
+
+    private int warrantyCycle;
+
+    private Date createDate;
+
+    private String address;
+
+    private String description;
+
+    private File file;
+
+    private String projectType;
+
+    private String username;
+
+    private String projectName;
+
+    private Date enrollStopTime;
+
+    private Date updateDate;
+
+    //1为申请中，2为开发中，3为已完成
+    private int projectState;
+
+<span class="fc" id="L45">    public Project() {</span>
+<span class="fc" id="L46">    }</span>
+
+    public Project(double cost, Integer devlivery_cycle, Integer warranty_cycle,
+                   String address, String description, String username,
+<span class="nc" id="L50">                   String project_type, String project_name) {</span>
+<span class="nc" id="L51">        this.cost = cost;</span>
+<span class="nc" id="L52">        this.deliveryCycle = devlivery_cycle;</span>
+<span class="nc" id="L53">        this.warrantyCycle = warranty_cycle;</span>
+<span class="nc" id="L54">        this.address = address;</span>
+<span class="nc" id="L55">        this.description = description;</span>
+<span class="nc" id="L56">        this.username = username;</span>
+<span class="nc" id="L57">        this.projectType = project_type;</span>
+<span class="nc" id="L58">        this.projectName = project_name;</span>
+<span class="nc" id="L59">    }</span>
+
+    public Long getprojectId() {
+<span class="nc" id="L62">        return projectId;</span>
+    }
+
+    public void setProject_id(Long project_id) {
+<span class="nc" id="L66">        this.projectId = project_id;</span>
+<span class="nc" id="L67">    }</span>
+
+    public Date getEnrollStopTime() {
+<span class="nc" id="L70">        return enrollStopTime;</span>
+    }
+
+    public void setEnrollStopTime(Date enrollStopTime) {
+<span class="nc" id="L74">        this.enrollStopTime = enrollStopTime;</span>
+<span class="nc" id="L75">    }</span>
+
+    public Date getUpdateDate() {
+<span class="nc" id="L78">        return updateDate;</span>
+    }
+
+    public void setUpdateDate(Date updateDate) {
+<span class="nc" id="L82">        this.updateDate = updateDate;</span>
+<span class="nc" id="L83">    }</span>
+
+    public String getProjectName() {
+<span class="nc" id="L86">        return projectName;</span>
+    }
+
+    public void setProjectName(String projectName) {
+<span class="nc" id="L90">        this.projectName = projectName;</span>
+<span class="nc" id="L91">    }</span>
+
+
+    public String getUsername() {
+<span class="nc" id="L95">        return username;</span>
+    }
+
+    public void setUsername(String username) {
+<span class="nc" id="L99">        this.username = username;</span>
+<span class="nc" id="L100">    }</span>
+
+
+    public double getCost() {
+<span class="nc" id="L104">        return cost;</span>
+    }
+
+    public void setCost(double cost) {
+<span class="nc" id="L108">        this.cost = cost;</span>
+<span class="nc" id="L109">    }</span>
+
+    public int getDeliveryCycle() {
+<span class="nc" id="L112">        return deliveryCycle;</span>
+    }
+
+    public void setDeliveryCycle(int deliveryCycle) {
+<span class="nc" id="L116">        this.deliveryCycle = deliveryCycle;</span>
+<span class="nc" id="L117">    }</span>
+
+    public int getWarrantyCycle() {
+<span class="nc" id="L120">        return warrantyCycle;</span>
+    }
+
+    public void setWarrantyCycle(int warrenty_cycle) {
+<span class="nc" id="L124">        this.warrantyCycle = warrenty_cycle;</span>
+<span class="nc" id="L125">    }</span>
+
+    public String getAddress() {
+<span class="nc" id="L128">        return address;</span>
+    }
+
+    public void setAddress(String address) {
+<span class="nc" id="L132">        this.address = address;</span>
+<span class="nc" id="L133">    }</span>
+
+    public String getDescription() {
+<span class="nc" id="L136">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="nc" id="L140">        this.description = description;</span>
+<span class="nc" id="L141">    }</span>
+
+    public Date getCreateDate() {
+<span class="nc" id="L144">        return createDate;</span>
+    }
+
+    public void setCreateDate(Date createDate) {
+<span class="nc" id="L148">        this.createDate = createDate;</span>
+<span class="nc" id="L149">    }</span>
+
+
+    public File getFile() {
+<span class="nc" id="L153">        return file;</span>
+    }
+
+    public void setFile(File file) {
+<span class="nc" id="L157">        this.file = file;</span>
+<span class="nc" id="L158">    }</span>
+
+    public String getProjectType() {
+<span class="nc" id="L161">        return projectType;</span>
+    }
+
+    public void setProjectType(String projectType) {
+<span class="nc" id="L165">        this.projectType = projectType;</span>
+<span class="nc" id="L166">    }</span>
+
+    public int getProjectState() {
+<span class="nc" id="L169">        return projectState;</span>
+    }
+
+    public void setProjectState(int projectState) {
+<span class="nc" id="L173">        this.projectState = projectState;</span>
+<span class="nc" id="L174">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L178">        return &quot;Project{&quot; +</span>
+                &quot;project_id=&quot; + projectId +
+                &quot;, cost=&quot; + cost +
+                &quot;, deliveryCycle=&quot; + deliveryCycle +
+                &quot;, warrantyCycle=&quot; + warrantyCycle +
+                &quot;, createDate=&quot; + createDate +
+                &quot;, address='&quot; + address + '\'' +
+                &quot;, description='&quot; + description + '\'' +
+                &quot;, file=&quot; + file +
+                &quot;, projectType='&quot; + projectType + '\'' +
+                &quot;, username='&quot; + username + '\'' +
+                &quot;, projectName='&quot; + projectName + '\'' +
+                &quot;, enrollStopTime=&quot; + enrollStopTime +
+                &quot;, updateDate=&quot; + updateDate +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

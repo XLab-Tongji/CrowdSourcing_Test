@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Requirement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.entity</a> &gt; <span class="el_source">Requirement.java</span></div><h1>Requirement.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.entity;
+
+import javax.persistence.*;
+import java.util.Date;
+
+/**
+ * Created by jieping on 2017-05-02.
+ */
+@Entity
+@Table(name = &quot;Requirement&quot;)
+<span class="fc" id="L11">public class Requirement {</span>
+    @Id
+    @GeneratedValue
+    private Long id;
+    @Column(name = &quot;requirement_name&quot;)
+    private String requirementName;
+    @Column(name = &quot;requirement_type&quot;)
+    private String requirementType;
+    private Date startTime;
+    private Date endTime;
+
+    private int needManager;
+    private String requirementDetail;
+    @Lob @Basic(fetch = FetchType.LAZY)
+    @Column(length=100000)
+    private byte[] file;
+<span class="fc" id="L27">    private int requirementState = 0;</span>
+    private Long creatorId;
+    private Long projectId;
+    public Long getCreatorId() {
+<span class="nc" id="L31">        return creatorId;</span>
+    }
+
+    public void setCreatorId(Long creatorId) {
+<span class="nc" id="L35">        this.creatorId = creatorId;</span>
+<span class="nc" id="L36">    }</span>
+
+    public void setRequirementState(int requirementState) {
+<span class="nc" id="L39">        this.requirementState = requirementState;</span>
+<span class="nc" id="L40">    }</span>
+
+    public int getRequirementState() {
+<span class="nc" id="L43">        return requirementState;</span>
+    }
+
+    public void setId(Long i)
+    {
+<span class="nc" id="L48">        id = i;</span>
+<span class="nc" id="L49">    }</span>
+    public Long getId()
+    {
+<span class="nc" id="L52">        return id;</span>
+    }
+    public void setrequirementName(String r)
+    {
+<span class="nc" id="L56">        requirementName = r;</span>
+<span class="nc" id="L57">    }</span>
+    public String getrequirementName()
+    {
+<span class="nc" id="L60">        return requirementName;</span>
+    }
+    public void setrequirementType(String t)
+    {
+<span class="nc" id="L64">        requirementType = t;</span>
+<span class="nc" id="L65">    }</span>
+    public String getrequirementType()
+    {
+<span class="nc" id="L68">        return requirementType;</span>
+    }
+    public void setStartTime(Date s)
+    {
+<span class="nc" id="L72">        startTime = s;</span>
+<span class="nc" id="L73">    }</span>
+    public Date getStartTime()
+    {
+<span class="nc" id="L76">        return startTime;</span>
+    }
+    public void setEndTime(Date e)
+    {
+<span class="nc" id="L80">        endTime = e;</span>
+<span class="nc" id="L81">    }</span>
+    public Date getEndTime()
+    {
+<span class="nc" id="L84">        return endTime;</span>
+    }
+    public void setNeedManager(int n)
+    {
+<span class="nc" id="L88">        needManager = n;</span>
+<span class="nc" id="L89">    }</span>
+    public int getNeedManager()
+    {
+<span class="nc" id="L92">        return needManager;</span>
+    }
+    public void setRequirementDetail(String d)
+    {
+<span class="nc" id="L96">        requirementDetail = d;</span>
+<span class="nc" id="L97">    }</span>
+    public String getRequirementDetail()
+    {
+<span class="nc" id="L100">        return requirementDetail;</span>
+    }
+    public void setFile(byte[] f)
+    {
+<span class="nc" id="L104">        file = f;</span>
+<span class="nc" id="L105">    }</span>
+    public byte[] getFile()
+    {
+<span class="nc" id="L108">        return file;</span>
+    }
+
+    public Long getProjectId() {
+<span class="nc" id="L112">        return projectId;</span>
+    }
+
+    public void setProjectId(Long projectId) {
+<span class="nc" id="L116">        this.projectId = projectId;</span>
+<span class="nc" id="L117">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

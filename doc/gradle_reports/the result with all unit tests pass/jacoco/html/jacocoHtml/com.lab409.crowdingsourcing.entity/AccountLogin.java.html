@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccountLogin.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.entity</a> &gt; <span class="el_source">AccountLogin.java</span></div><h1>AccountLogin.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
+
+/**
+ * Created by SHIKUN on 2016/10/9.
+ */
+@Entity
+@Table(name=&quot;AccountLoginLog&quot;)
+public class AccountLogin {
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String ip;
+
+    private String device;
+
+    private String token;
+
+    private Date create_time;
+
+    private Date expire_time;
+
+    private Long account_id;
+
+    private String plat;
+
+
+
+    private String username;
+    public AccountLogin()
+<span class="fc" id="L36">    {}</span>
+
+    public AccountLogin( String ip, String token,  Date create_time,
+                         Date expire_time,  Long account_id,
+                         String plat,  String username)
+<span class="nc" id="L41">    {</span>
+<span class="nc" id="L42">        this.ip = ip;</span>
+<span class="nc" id="L43">        this.token = token;</span>
+<span class="nc" id="L44">        this.create_time = create_time;</span>
+<span class="nc" id="L45">        this.expire_time = expire_time;</span>
+<span class="nc" id="L46">        this.account_id = account_id;</span>
+<span class="nc" id="L47">        this.plat = plat;</span>
+<span class="nc" id="L48">        this.username = username;</span>
+<span class="nc" id="L49">    }</span>
+
+    public String getUsername() {
+<span class="nc" id="L52">        return username;</span>
+    }
+
+    public void setUsername(String username) {
+<span class="nc" id="L56">        this.username = username;</span>
+<span class="nc" id="L57">    }</span>
+
+    public Long getId() {
+<span class="nc" id="L60">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="nc" id="L64">        this.id = id;</span>
+<span class="nc" id="L65">    }</span>
+
+    public String getIp() {
+<span class="nc" id="L68">        return ip;</span>
+    }
+
+    public void setIp(String ip) {
+<span class="nc" id="L72">        this.ip = ip;</span>
+<span class="nc" id="L73">    }</span>
+
+    public String getDevice() {
+<span class="nc" id="L76">        return device;</span>
+    }
+
+    public void setDevice(String device) {
+<span class="nc" id="L80">        this.device = device;</span>
+<span class="nc" id="L81">    }</span>
+
+    public String getToken() {
+<span class="nc" id="L84">        return token;</span>
+    }
+
+    public void setToken(String token) {
+<span class="nc" id="L88">        this.token = token;</span>
+<span class="nc" id="L89">    }</span>
+
+    public Date getCreate_time() {
+<span class="nc" id="L92">        return create_time;</span>
+    }
+
+    public void setCreate_time(Date create_time) {
+<span class="nc" id="L96">        this.create_time = create_time;</span>
+<span class="nc" id="L97">    }</span>
+
+    public Date getExpire_time() {
+<span class="nc" id="L100">        return expire_time;</span>
+    }
+
+    public void setExpire_time(Date expire_time) {
+<span class="nc" id="L104">        this.expire_time = expire_time;</span>
+<span class="nc" id="L105">    }</span>
+
+    public Long getAccount_id() {
+<span class="nc" id="L108">        return account_id;</span>
+    }
+
+    public void setAccount_id(Long account_id) {
+<span class="nc" id="L112">        this.account_id = account_id;</span>
+<span class="nc" id="L113">    }</span>
+
+    public String getPlat() {
+<span class="nc" id="L116">        return plat;</span>
+    }
+
+    public void setPlat(String plat) {
+<span class="nc" id="L120">        this.plat = plat;</span>
+<span class="nc" id="L121">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L125">        return &quot;AccountLogin{&quot; +</span>
+                &quot;ip='&quot; + ip + '\'' +
+                &quot;, device='&quot; + device + '\'' +
+                &quot;, token='&quot; + token + '\'' +
+                &quot;, create_time=&quot; + create_time +
+                &quot;, expire_time=&quot; + expire_time +
+                &quot;, account_id=&quot; + account_id +
+                &quot;, plat='&quot; + plat + '\'' +
+                &quot;, id=&quot; + id +
+                &quot;, username='&quot; + username + '\'' +
+                '}';
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

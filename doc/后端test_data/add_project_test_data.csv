@@ -1,0 +1,577 @@
+cost,delivery_day,warrenty_cycle,username,expectation
+-1,1999-03-20,-1,cpx,wrong cost
+-1,1999-03-20,-1,nonono,wrong cost
+-1,1999-03-20,-1,cancan,wrong cost
+-1,1999-03-20,-1,hushili,wrong cost
+-1,1999-03-20,0,cpx,wrong cost
+-1,1999-03-20,0,nonono,wrong cost
+-1,1999-03-20,0,cancan,wrong cost
+-1,1999-03-20,0,hushili,wrong cost
+-1,1999-03-20,40,cpx,wrong cost
+-1,1999-03-20,40,nonono,wrong cost
+-1,1999-03-20,40,cancan,wrong cost
+-1,1999-03-20,40,hushili,wrong cost
+-1,1999-03-20,32432,cpx,wrong cost
+-1,1999-03-20,32432,nonono,wrong cost
+-1,1999-03-20,32432,cancan,wrong cost
+-1,1999-03-20,32432,hushili,wrong cost
+-1,1999-03-20,21453144,cpx,wrong cost
+-1,1999-03-20,21453144,nonono,wrong cost
+-1,1999-03-20,21453144,cancan,wrong cost
+-1,1999-03-20,21453144,hushili,wrong cost
+-1,1999-03-20,214545323443,cpx,wrong cost
+-1,1999-03-20,214545323443,nonono,wrong cost
+-1,1999-03-20,214545323443,cancan,wrong cost
+-1,1999-03-20,214545323443,hushili,wrong cost
+-1,2018-07-29,-1,cpx,wrong cost
+-1,2018-07-29,-1,nonono,wrong cost
+-1,2018-07-29,-1,cancan,wrong cost
+-1,2018-07-29,-1,hushili,wrong cost
+-1,2018-07-29,0,cpx,wrong cost
+-1,2018-07-29,0,nonono,wrong cost
+-1,2018-07-29,0,cancan,wrong cost
+-1,2018-07-29,0,hushili,wrong cost
+-1,2018-07-29,40,cpx,wrong cost
+-1,2018-07-29,40,nonono,wrong cost
+-1,2018-07-29,40,cancan,wrong cost
+-1,2018-07-29,40,hushili,wrong cost
+-1,2018-07-29,32432,cpx,wrong cost
+-1,2018-07-29,32432,nonono,wrong cost
+-1,2018-07-29,32432,cancan,wrong cost
+-1,2018-07-29,32432,hushili,wrong cost
+-1,2018-07-29,21453144,cpx,wrong cost
+-1,2018-07-29,21453144,nonono,wrong cost
+-1,2018-07-29,21453144,cancan,wrong cost
+-1,2018-07-29,21453144,hushili,wrong cost
+-1,2018-07-29,214545323443,cpx,wrong cost
+-1,2018-07-29,214545323443,nonono,wrong cost
+-1,2018-07-29,214545323443,cancan,wrong cost
+-1,2018-07-29,214545323443,hushili,wrong cost
+-1,asjodhsw,-1,cpx,wrong cost
+-1,asjodhsw,-1,nonono,wrong cost
+-1,asjodhsw,-1,cancan,wrong cost
+-1,asjodhsw,-1,hushili,wrong cost
+-1,asjodhsw,0,cpx,wrong cost
+-1,asjodhsw,0,nonono,wrong cost
+-1,asjodhsw,0,cancan,wrong cost
+-1,asjodhsw,0,hushili,wrong cost
+-1,asjodhsw,40,cpx,wrong cost
+-1,asjodhsw,40,nonono,wrong cost
+-1,asjodhsw,40,cancan,wrong cost
+-1,asjodhsw,40,hushili,wrong cost
+-1,asjodhsw,32432,cpx,wrong cost
+-1,asjodhsw,32432,nonono,wrong cost
+-1,asjodhsw,32432,cancan,wrong cost
+-1,asjodhsw,32432,hushili,wrong cost
+-1,asjodhsw,21453144,cpx,wrong cost
+-1,asjodhsw,21453144,nonono,wrong cost
+-1,asjodhsw,21453144,cancan,wrong cost
+-1,asjodhsw,21453144,hushili,wrong cost
+-1,asjodhsw,214545323443,cpx,wrong cost
+-1,asjodhsw,214545323443,nonono,wrong cost
+-1,asjodhsw,214545323443,cancan,wrong cost
+-1,asjodhsw,214545323443,hushili,wrong cost
+-1,213122443,-1,cpx,wrong cost
+-1,213122443,-1,nonono,wrong cost
+-1,213122443,-1,cancan,wrong cost
+-1,213122443,-1,hushili,wrong cost
+-1,213122443,0,cpx,wrong cost
+-1,213122443,0,nonono,wrong cost
+-1,213122443,0,cancan,wrong cost
+-1,213122443,0,hushili,wrong cost
+-1,213122443,40,cpx,wrong cost
+-1,213122443,40,nonono,wrong cost
+-1,213122443,40,cancan,wrong cost
+-1,213122443,40,hushili,wrong cost
+-1,213122443,32432,cpx,wrong cost
+-1,213122443,32432,nonono,wrong cost
+-1,213122443,32432,cancan,wrong cost
+-1,213122443,32432,hushili,wrong cost
+-1,213122443,21453144,cpx,wrong cost
+-1,213122443,21453144,nonono,wrong cost
+-1,213122443,21453144,cancan,wrong cost
+-1,213122443,21453144,hushili,wrong cost
+-1,213122443,214545323443,cpx,wrong cost
+-1,213122443,214545323443,nonono,wrong cost
+-1,213122443,214545323443,cancan,wrong cost
+-1,213122443,214545323443,hushili,wrong cost
+0,1999-03-20,-1,cpx,wrong warrant_cycle
+0,1999-03-20,-1,nonono,wrong warrant_cycle
+0,1999-03-20,-1,cancan,wrong warrant_cycle
+0,1999-03-20,-1,hushili,wrong warrant_cycle
+0,1999-03-20,0,cpx,wrong warrant_cycle
+0,1999-03-20,0,nonono,wrong warrant_cycle
+0,1999-03-20,0,cancan,wrong warrant_cycle
+0,1999-03-20,0,hushili,wrong warrant_cycle
+0,1999-03-20,40,cpx,success
+0,1999-03-20,40,nonono,can not find user
+0,1999-03-20,40,cancan,user is not a coder
+0,1999-03-20,40,hushili,user is not a coder
+0,1999-03-20,32432,cpx,success
+0,1999-03-20,32432,nonono,can not find user
+0,1999-03-20,32432,cancan,user is not a coder
+0,1999-03-20,32432,hushili,user is not a coder
+0,1999-03-20,21453144,cpx,success
+0,1999-03-20,21453144,nonono,can not find user
+0,1999-03-20,21453144,cancan,user is not a coder
+0,1999-03-20,21453144,hushili,user is not a coder
+0,1999-03-20,214545323443,cpx,success
+0,1999-03-20,214545323443,nonono,can not find user
+0,1999-03-20,214545323443,cancan,user is not a coder
+0,1999-03-20,214545323443,hushili,user is not a coder
+0,2018-07-29,-1,cpx,wrong warrant_cycle
+0,2018-07-29,-1,nonono,wrong warrant_cycle
+0,2018-07-29,-1,cancan,wrong warrant_cycle
+0,2018-07-29,-1,hushili,wrong warrant_cycle
+0,2018-07-29,0,cpx,wrong warrant_cycle
+0,2018-07-29,0,nonono,wrong warrant_cycle
+0,2018-07-29,0,cancan,wrong warrant_cycle
+0,2018-07-29,0,hushili,wrong warrant_cycle
+0,2018-07-29,40,cpx,success
+0,2018-07-29,40,nonono,can not find user
+0,2018-07-29,40,cancan,user is not a coder
+0,2018-07-29,40,hushili,user is not a coder
+0,2018-07-29,32432,cpx,success
+0,2018-07-29,32432,nonono,can not find user
+0,2018-07-29,32432,cancan,user is not a coder
+0,2018-07-29,32432,hushili,user is not a coder
+0,2018-07-29,21453144,cpx,success
+0,2018-07-29,21453144,nonono,can not find user
+0,2018-07-29,21453144,cancan,user is not a coder
+0,2018-07-29,21453144,hushili,user is not a coder
+0,2018-07-29,214545323443,cpx,success
+0,2018-07-29,214545323443,nonono,can not find user
+0,2018-07-29,214545323443,cancan,user is not a coder
+0,2018-07-29,214545323443,hushili,user is not a coder
+0,asjodhsw,-1,cpx,wrong warrant_cycle
+0,asjodhsw,-1,nonono,wrong warrant_cycle
+0,asjodhsw,-1,cancan,wrong warrant_cycle
+0,asjodhsw,-1,hushili,wrong warrant_cycle
+0,asjodhsw,0,cpx,wrong warrant_cycle
+0,asjodhsw,0,nonono,wrong warrant_cycle
+0,asjodhsw,0,cancan,wrong warrant_cycle
+0,asjodhsw,0,hushili,wrong warrant_cycle
+0,asjodhsw,40,cpx,success
+0,asjodhsw,40,nonono,can not find user
+0,asjodhsw,40,cancan,user is not a coder
+0,asjodhsw,40,hushili,user is not a coder
+0,asjodhsw,32432,cpx,success
+0,asjodhsw,32432,nonono,can not find user
+0,asjodhsw,32432,cancan,user is not a coder
+0,asjodhsw,32432,hushili,user is not a coder
+0,asjodhsw,21453144,cpx,success
+0,asjodhsw,21453144,nonono,can not find user
+0,asjodhsw,21453144,cancan,user is not a coder
+0,asjodhsw,21453144,hushili,user is not a coder
+0,asjodhsw,214545323443,cpx,success
+0,asjodhsw,214545323443,nonono,can not find user
+0,asjodhsw,214545323443,cancan,user is not a coder
+0,asjodhsw,214545323443,hushili,user is not a coder
+0,213122443,-1,cpx,wrong warrant_cycle
+0,213122443,-1,nonono,wrong warrant_cycle
+0,213122443,-1,cancan,wrong warrant_cycle
+0,213122443,-1,hushili,wrong warrant_cycle
+0,213122443,0,cpx,wrong warrant_cycle
+0,213122443,0,nonono,wrong warrant_cycle
+0,213122443,0,cancan,wrong warrant_cycle
+0,213122443,0,hushili,wrong warrant_cycle
+0,213122443,40,cpx,success
+0,213122443,40,nonono,can not find user
+0,213122443,40,cancan,user is not a coder
+0,213122443,40,hushili,user is not a coder
+0,213122443,32432,cpx,success
+0,213122443,32432,nonono,can not find user
+0,213122443,32432,cancan,user is not a coder
+0,213122443,32432,hushili,user is not a coder
+0,213122443,21453144,cpx,success
+0,213122443,21453144,nonono,can not find user
+0,213122443,21453144,cancan,user is not a coder
+0,213122443,21453144,hushili,user is not a coder
+0,213122443,214545323443,cpx,success
+0,213122443,214545323443,nonono,can not find user
+0,213122443,214545323443,cancan,user is not a coder
+0,213122443,214545323443,hushili,user is not a coder
+20,1999-03-20,-1,cpx,wrong warrant_cycle
+20,1999-03-20,-1,nonono,wrong warrant_cycle
+20,1999-03-20,-1,cancan,wrong warrant_cycle
+20,1999-03-20,-1,hushili,wrong warrant_cycle
+20,1999-03-20,0,cpx,wrong warrant_cycle
+20,1999-03-20,0,nonono,wrong warrant_cycle
+20,1999-03-20,0,cancan,wrong warrant_cycle
+20,1999-03-20,0,hushili,wrong warrant_cycle
+20,1999-03-20,40,cpx,success
+20,1999-03-20,40,nonono,can not find user
+20,1999-03-20,40,cancan,user is not a coder
+20,1999-03-20,40,hushili,user is not a coder
+20,1999-03-20,32432,cpx,success
+20,1999-03-20,32432,nonono,can not find user
+20,1999-03-20,32432,cancan,user is not a coder
+20,1999-03-20,32432,hushili,user is not a coder
+20,1999-03-20,21453144,cpx,success
+20,1999-03-20,21453144,nonono,can not find user
+20,1999-03-20,21453144,cancan,user is not a coder
+20,1999-03-20,21453144,hushili,user is not a coder
+20,1999-03-20,214545323443,cpx,success
+20,1999-03-20,214545323443,nonono,can not find user
+20,1999-03-20,214545323443,cancan,user is not a coder
+20,1999-03-20,214545323443,hushili,user is not a coder
+20,2018-07-29,-1,cpx,wrong warrant_cycle
+20,2018-07-29,-1,nonono,wrong warrant_cycle
+20,2018-07-29,-1,cancan,wrong warrant_cycle
+20,2018-07-29,-1,hushili,wrong warrant_cycle
+20,2018-07-29,0,cpx,wrong warrant_cycle
+20,2018-07-29,0,nonono,wrong warrant_cycle
+20,2018-07-29,0,cancan,wrong warrant_cycle
+20,2018-07-29,0,hushili,wrong warrant_cycle
+20,2018-07-29,40,cpx,success
+20,2018-07-29,40,nonono,can not find user
+20,2018-07-29,40,cancan,user is not a coder
+20,2018-07-29,40,hushili,user is not a coder
+20,2018-07-29,32432,cpx,success
+20,2018-07-29,32432,nonono,can not find user
+20,2018-07-29,32432,cancan,user is not a coder
+20,2018-07-29,32432,hushili,user is not a coder
+20,2018-07-29,21453144,cpx,success
+20,2018-07-29,21453144,nonono,can not find user
+20,2018-07-29,21453144,cancan,user is not a coder
+20,2018-07-29,21453144,hushili,user is not a coder
+20,2018-07-29,214545323443,cpx,success
+20,2018-07-29,214545323443,nonono,can not find user
+20,2018-07-29,214545323443,cancan,user is not a coder
+20,2018-07-29,214545323443,hushili,user is not a coder
+20,asjodhsw,-1,cpx,wrong warrant_cycle
+20,asjodhsw,-1,nonono,wrong warrant_cycle
+20,asjodhsw,-1,cancan,wrong warrant_cycle
+20,asjodhsw,-1,hushili,wrong warrant_cycle
+20,asjodhsw,0,cpx,wrong warrant_cycle
+20,asjodhsw,0,nonono,wrong warrant_cycle
+20,asjodhsw,0,cancan,wrong warrant_cycle
+20,asjodhsw,0,hushili,wrong warrant_cycle
+20,asjodhsw,40,cpx,success
+20,asjodhsw,40,nonono,can not find user
+20,asjodhsw,40,cancan,user is not a coder
+20,asjodhsw,40,hushili,user is not a coder
+20,asjodhsw,32432,cpx,success
+20,asjodhsw,32432,nonono,can not find user
+20,asjodhsw,32432,cancan,user is not a coder
+20,asjodhsw,32432,hushili,user is not a coder
+20,asjodhsw,21453144,cpx,success
+20,asjodhsw,21453144,nonono,can not find user
+20,asjodhsw,21453144,cancan,user is not a coder
+20,asjodhsw,21453144,hushili,user is not a coder
+20,asjodhsw,214545323443,cpx,success
+20,asjodhsw,214545323443,nonono,can not find user
+20,asjodhsw,214545323443,cancan,user is not a coder
+20,asjodhsw,214545323443,hushili,user is not a coder
+20,213122443,-1,cpx,wrong warrant_cycle
+20,213122443,-1,nonono,wrong warrant_cycle
+20,213122443,-1,cancan,wrong warrant_cycle
+20,213122443,-1,hushili,wrong warrant_cycle
+20,213122443,0,cpx,wrong warrant_cycle
+20,213122443,0,nonono,wrong warrant_cycle
+20,213122443,0,cancan,wrong warrant_cycle
+20,213122443,0,hushili,wrong warrant_cycle
+20,213122443,40,cpx,success
+20,213122443,40,nonono,can not find user
+20,213122443,40,cancan,user is not a coder
+20,213122443,40,hushili,user is not a coder
+20,213122443,32432,cpx,success
+20,213122443,32432,nonono,can not find user
+20,213122443,32432,cancan,user is not a coder
+20,213122443,32432,hushili,user is not a coder
+20,213122443,21453144,cpx,success
+20,213122443,21453144,nonono,can not find user
+20,213122443,21453144,cancan,user is not a coder
+20,213122443,21453144,hushili,user is not a coder
+20,213122443,214545323443,cpx,success
+20,213122443,214545323443,nonono,can not find user
+20,213122443,214545323443,cancan,user is not a coder
+20,213122443,214545323443,hushili,user is not a coder
+5000,1999-03-20,-1,cpx,wrong warrant_cycle
+5000,1999-03-20,-1,nonono,wrong warrant_cycle
+5000,1999-03-20,-1,cancan,wrong warrant_cycle
+5000,1999-03-20,-1,hushili,wrong warrant_cycle
+5000,1999-03-20,0,cpx,wrong warrant_cycle
+5000,1999-03-20,0,nonono,wrong warrant_cycle
+5000,1999-03-20,0,cancan,wrong warrant_cycle
+5000,1999-03-20,0,hushili,wrong warrant_cycle
+5000,1999-03-20,40,cpx,success
+5000,1999-03-20,40,nonono,can not find user
+5000,1999-03-20,40,cancan,user is not a coder
+5000,1999-03-20,40,hushili,user is not a coder
+5000,1999-03-20,32432,cpx,success
+5000,1999-03-20,32432,nonono,can not find user
+5000,1999-03-20,32432,cancan,user is not a coder
+5000,1999-03-20,32432,hushili,user is not a coder
+5000,1999-03-20,21453144,cpx,success
+5000,1999-03-20,21453144,nonono,can not find user
+5000,1999-03-20,21453144,cancan,user is not a coder
+5000,1999-03-20,21453144,hushili,user is not a coder
+5000,1999-03-20,214545323443,cpx,success
+5000,1999-03-20,214545323443,nonono,can not find user
+5000,1999-03-20,214545323443,cancan,user is not a coder
+5000,1999-03-20,214545323443,hushili,user is not a coder
+5000,2018-07-29,-1,cpx,wrong warrant_cycle
+5000,2018-07-29,-1,nonono,wrong warrant_cycle
+5000,2018-07-29,-1,cancan,wrong warrant_cycle
+5000,2018-07-29,-1,hushili,wrong warrant_cycle
+5000,2018-07-29,0,cpx,wrong warrant_cycle
+5000,2018-07-29,0,nonono,wrong warrant_cycle
+5000,2018-07-29,0,cancan,wrong warrant_cycle
+5000,2018-07-29,0,hushili,wrong warrant_cycle
+5000,2018-07-29,40,cpx,success
+5000,2018-07-29,40,nonono,can not find user
+5000,2018-07-29,40,cancan,user is not a coder
+5000,2018-07-29,40,hushili,user is not a coder
+5000,2018-07-29,32432,cpx,success
+5000,2018-07-29,32432,nonono,can not find user
+5000,2018-07-29,32432,cancan,user is not a coder
+5000,2018-07-29,32432,hushili,user is not a coder
+5000,2018-07-29,21453144,cpx,success
+5000,2018-07-29,21453144,nonono,can not find user
+5000,2018-07-29,21453144,cancan,user is not a coder
+5000,2018-07-29,21453144,hushili,user is not a coder
+5000,2018-07-29,214545323443,cpx,success
+5000,2018-07-29,214545323443,nonono,can not find user
+5000,2018-07-29,214545323443,cancan,user is not a coder
+5000,2018-07-29,214545323443,hushili,user is not a coder
+5000,asjodhsw,-1,cpx,wrong warrant_cycle
+5000,asjodhsw,-1,nonono,wrong warrant_cycle
+5000,asjodhsw,-1,cancan,wrong warrant_cycle
+5000,asjodhsw,-1,hushili,wrong warrant_cycle
+5000,asjodhsw,0,cpx,wrong warrant_cycle
+5000,asjodhsw,0,nonono,wrong warrant_cycle
+5000,asjodhsw,0,cancan,wrong warrant_cycle
+5000,asjodhsw,0,hushili,wrong warrant_cycle
+5000,asjodhsw,40,cpx,success
+5000,asjodhsw,40,nonono,can not find user
+5000,asjodhsw,40,cancan,user is not a coder
+5000,asjodhsw,40,hushili,user is not a coder
+5000,asjodhsw,32432,cpx,success
+5000,asjodhsw,32432,nonono,can not find user
+5000,asjodhsw,32432,cancan,user is not a coder
+5000,asjodhsw,32432,hushili,user is not a coder
+5000,asjodhsw,21453144,cpx,success
+5000,asjodhsw,21453144,nonono,can not find user
+5000,asjodhsw,21453144,cancan,user is not a coder
+5000,asjodhsw,21453144,hushili,user is not a coder
+5000,asjodhsw,214545323443,cpx,success
+5000,asjodhsw,214545323443,nonono,can not find user
+5000,asjodhsw,214545323443,cancan,user is not a coder
+5000,asjodhsw,214545323443,hushili,user is not a coder
+5000,213122443,-1,cpx,wrong warrant_cycle
+5000,213122443,-1,nonono,wrong warrant_cycle
+5000,213122443,-1,cancan,wrong warrant_cycle
+5000,213122443,-1,hushili,wrong warrant_cycle
+5000,213122443,0,cpx,wrong warrant_cycle
+5000,213122443,0,nonono,wrong warrant_cycle
+5000,213122443,0,cancan,wrong warrant_cycle
+5000,213122443,0,hushili,wrong warrant_cycle
+5000,213122443,40,cpx,success
+5000,213122443,40,nonono,can not find user
+5000,213122443,40,cancan,user is not a coder
+5000,213122443,40,hushili,user is not a coder
+5000,213122443,32432,cpx,success
+5000,213122443,32432,nonono,can not find user
+5000,213122443,32432,cancan,user is not a coder
+5000,213122443,32432,hushili,user is not a coder
+5000,213122443,21453144,cpx,success
+5000,213122443,21453144,nonono,can not find user
+5000,213122443,21453144,cancan,user is not a coder
+5000,213122443,21453144,hushili,user is not a coder
+5000,213122443,214545323443,cpx,success
+5000,213122443,214545323443,nonono,can not find user
+5000,213122443,214545323443,cancan,user is not a coder
+5000,213122443,214545323443,hushili,user is not a coder
+19284,1999-03-20,-1,cpx,wrong warrant_cycle
+19284,1999-03-20,-1,nonono,wrong warrant_cycle
+19284,1999-03-20,-1,cancan,wrong warrant_cycle
+19284,1999-03-20,-1,hushili,wrong warrant_cycle
+19284,1999-03-20,0,cpx,wrong warrant_cycle
+19284,1999-03-20,0,nonono,wrong warrant_cycle
+19284,1999-03-20,0,cancan,wrong warrant_cycle
+19284,1999-03-20,0,hushili,wrong warrant_cycle
+19284,1999-03-20,40,cpx,success
+19284,1999-03-20,40,nonono,can not find user
+19284,1999-03-20,40,cancan,user is not a coder
+19284,1999-03-20,40,hushili,user is not a coder
+19284,1999-03-20,32432,cpx,success
+19284,1999-03-20,32432,nonono,can not find user
+19284,1999-03-20,32432,cancan,user is not a coder
+19284,1999-03-20,32432,hushili,user is not a coder
+19284,1999-03-20,21453144,cpx,success
+19284,1999-03-20,21453144,nonono,can not find user
+19284,1999-03-20,21453144,cancan,user is not a coder
+19284,1999-03-20,21453144,hushili,user is not a coder
+19284,1999-03-20,214545323443,cpx,success
+19284,1999-03-20,214545323443,nonono,can not find user
+19284,1999-03-20,214545323443,cancan,user is not a coder
+19284,1999-03-20,214545323443,hushili,user is not a coder
+19284,2018-07-29,-1,cpx,wrong warrant_cycle
+19284,2018-07-29,-1,nonono,wrong warrant_cycle
+19284,2018-07-29,-1,cancan,wrong warrant_cycle
+19284,2018-07-29,-1,hushili,wrong warrant_cycle
+19284,2018-07-29,0,cpx,wrong warrant_cycle
+19284,2018-07-29,0,nonono,wrong warrant_cycle
+19284,2018-07-29,0,cancan,wrong warrant_cycle
+19284,2018-07-29,0,hushili,wrong warrant_cycle
+19284,2018-07-29,40,cpx,success
+19284,2018-07-29,40,nonono,can not find user
+19284,2018-07-29,40,cancan,user is not a coder
+19284,2018-07-29,40,hushili,user is not a coder
+19284,2018-07-29,32432,cpx,success
+19284,2018-07-29,32432,nonono,can not find user
+19284,2018-07-29,32432,cancan,user is not a coder
+19284,2018-07-29,32432,hushili,user is not a coder
+19284,2018-07-29,21453144,cpx,success
+19284,2018-07-29,21453144,nonono,can not find user
+19284,2018-07-29,21453144,cancan,user is not a coder
+19284,2018-07-29,21453144,hushili,user is not a coder
+19284,2018-07-29,214545323443,cpx,success
+19284,2018-07-29,214545323443,nonono,can not find user
+19284,2018-07-29,214545323443,cancan,user is not a coder
+19284,2018-07-29,214545323443,hushili,user is not a coder
+19284,asjodhsw,-1,cpx,wrong warrant_cycle
+19284,asjodhsw,-1,nonono,wrong warrant_cycle
+19284,asjodhsw,-1,cancan,wrong warrant_cycle
+19284,asjodhsw,-1,hushili,wrong warrant_cycle
+19284,asjodhsw,0,cpx,wrong warrant_cycle
+19284,asjodhsw,0,nonono,wrong warrant_cycle
+19284,asjodhsw,0,cancan,wrong warrant_cycle
+19284,asjodhsw,0,hushili,wrong warrant_cycle
+19284,asjodhsw,40,cpx,success
+19284,asjodhsw,40,nonono,can not find user
+19284,asjodhsw,40,cancan,user is not a coder
+19284,asjodhsw,40,hushili,user is not a coder
+19284,asjodhsw,32432,cpx,success
+19284,asjodhsw,32432,nonono,can not find user
+19284,asjodhsw,32432,cancan,user is not a coder
+19284,asjodhsw,32432,hushili,user is not a coder
+19284,asjodhsw,21453144,cpx,success
+19284,asjodhsw,21453144,nonono,can not find user
+19284,asjodhsw,21453144,cancan,user is not a coder
+19284,asjodhsw,21453144,hushili,user is not a coder
+19284,asjodhsw,214545323443,cpx,success
+19284,asjodhsw,214545323443,nonono,can not find user
+19284,asjodhsw,214545323443,cancan,user is not a coder
+19284,asjodhsw,214545323443,hushili,user is not a coder
+19284,213122443,-1,cpx,wrong warrant_cycle
+19284,213122443,-1,nonono,wrong warrant_cycle
+19284,213122443,-1,cancan,wrong warrant_cycle
+19284,213122443,-1,hushili,wrong warrant_cycle
+19284,213122443,0,cpx,wrong warrant_cycle
+19284,213122443,0,nonono,wrong warrant_cycle
+19284,213122443,0,cancan,wrong warrant_cycle
+19284,213122443,0,hushili,wrong warrant_cycle
+19284,213122443,40,cpx,success
+19284,213122443,40,nonono,can not find user
+19284,213122443,40,cancan,user is not a coder
+19284,213122443,40,hushili,user is not a coder
+19284,213122443,32432,cpx,success
+19284,213122443,32432,nonono,can not find user
+19284,213122443,32432,cancan,user is not a coder
+19284,213122443,32432,hushili,user is not a coder
+19284,213122443,21453144,cpx,success
+19284,213122443,21453144,nonono,can not find user
+19284,213122443,21453144,cancan,user is not a coder
+19284,213122443,21453144,hushili,user is not a coder
+19284,213122443,214545323443,cpx,success
+19284,213122443,214545323443,nonono,can not find user
+19284,213122443,214545323443,cancan,user is not a coder
+19284,213122443,214545323443,hushili,user is not a coder
+888888888888,1999-03-20,-1,cpx,wrong warrant_cycle
+888888888888,1999-03-20,-1,nonono,wrong warrant_cycle
+888888888888,1999-03-20,-1,cancan,wrong warrant_cycle
+888888888888,1999-03-20,-1,hushili,wrong warrant_cycle
+888888888888,1999-03-20,0,cpx,wrong warrant_cycle
+888888888888,1999-03-20,0,nonono,wrong warrant_cycle
+888888888888,1999-03-20,0,cancan,wrong warrant_cycle
+888888888888,1999-03-20,0,hushili,wrong warrant_cycle
+888888888888,1999-03-20,40,cpx,success
+888888888888,1999-03-20,40,nonono,can not find user
+888888888888,1999-03-20,40,cancan,user is not a coder
+888888888888,1999-03-20,40,hushili,user is not a coder
+888888888888,1999-03-20,32432,cpx,success
+888888888888,1999-03-20,32432,nonono,can not find user
+888888888888,1999-03-20,32432,cancan,user is not a coder
+888888888888,1999-03-20,32432,hushili,user is not a coder
+888888888888,1999-03-20,21453144,cpx,success
+888888888888,1999-03-20,21453144,nonono,can not find user
+888888888888,1999-03-20,21453144,cancan,user is not a coder
+888888888888,1999-03-20,21453144,hushili,user is not a coder
+888888888888,1999-03-20,214545323443,cpx,success
+888888888888,1999-03-20,214545323443,nonono,can not find user
+888888888888,1999-03-20,214545323443,cancan,user is not a coder
+888888888888,1999-03-20,214545323443,hushili,user is not a coder
+888888888888,2018-07-29,-1,cpx,wrong warrant_cycle
+888888888888,2018-07-29,-1,nonono,wrong warrant_cycle
+888888888888,2018-07-29,-1,cancan,wrong warrant_cycle
+888888888888,2018-07-29,-1,hushili,wrong warrant_cycle
+888888888888,2018-07-29,0,cpx,wrong warrant_cycle
+888888888888,2018-07-29,0,nonono,wrong warrant_cycle
+888888888888,2018-07-29,0,cancan,wrong warrant_cycle
+888888888888,2018-07-29,0,hushili,wrong warrant_cycle
+888888888888,2018-07-29,40,cpx,success
+888888888888,2018-07-29,40,nonono,can not find user
+888888888888,2018-07-29,40,cancan,user is not a coder
+888888888888,2018-07-29,40,hushili,user is not a coder
+888888888888,2018-07-29,32432,cpx,success
+888888888888,2018-07-29,32432,nonono,can not find user
+888888888888,2018-07-29,32432,cancan,user is not a coder
+888888888888,2018-07-29,32432,hushili,user is not a coder
+888888888888,2018-07-29,21453144,cpx,success
+888888888888,2018-07-29,21453144,nonono,can not find user
+888888888888,2018-07-29,21453144,cancan,user is not a coder
+888888888888,2018-07-29,21453144,hushili,user is not a coder
+888888888888,2018-07-29,214545323443,cpx,success
+888888888888,2018-07-29,214545323443,nonono,can not find user
+888888888888,2018-07-29,214545323443,cancan,user is not a coder
+888888888888,2018-07-29,214545323443,hushili,user is not a coder
+888888888888,asjodhsw,-1,cpx,wrong warrant_cycle
+888888888888,asjodhsw,-1,nonono,wrong warrant_cycle
+888888888888,asjodhsw,-1,cancan,wrong warrant_cycle
+888888888888,asjodhsw,-1,hushili,wrong warrant_cycle
+888888888888,asjodhsw,0,cpx,wrong warrant_cycle
+888888888888,asjodhsw,0,nonono,wrong warrant_cycle
+888888888888,asjodhsw,0,cancan,wrong warrant_cycle
+888888888888,asjodhsw,0,hushili,wrong warrant_cycle
+888888888888,asjodhsw,40,cpx,success
+888888888888,asjodhsw,40,nonono,can not find user
+888888888888,asjodhsw,40,cancan,user is not a coder
+888888888888,asjodhsw,40,hushili,user is not a coder
+888888888888,asjodhsw,32432,cpx,success
+888888888888,asjodhsw,32432,nonono,can not find user
+888888888888,asjodhsw,32432,cancan,user is not a coder
+888888888888,asjodhsw,32432,hushili,user is not a coder
+888888888888,asjodhsw,21453144,cpx,success
+888888888888,asjodhsw,21453144,nonono,can not find user
+888888888888,asjodhsw,21453144,cancan,user is not a coder
+888888888888,asjodhsw,21453144,hushili,user is not a coder
+888888888888,asjodhsw,214545323443,cpx,success
+888888888888,asjodhsw,214545323443,nonono,can not find user
+888888888888,asjodhsw,214545323443,cancan,user is not a coder
+888888888888,asjodhsw,214545323443,hushili,user is not a coder
+888888888888,213122443,-1,cpx,wrong warrant_cycle
+888888888888,213122443,-1,nonono,wrong warrant_cycle
+888888888888,213122443,-1,cancan,wrong warrant_cycle
+888888888888,213122443,-1,hushili,wrong warrant_cycle
+888888888888,213122443,0,cpx,wrong warrant_cycle
+888888888888,213122443,0,nonono,wrong warrant_cycle
+888888888888,213122443,0,cancan,wrong warrant_cycle
+888888888888,213122443,0,hushili,wrong warrant_cycle
+888888888888,213122443,40,cpx,success
+888888888888,213122443,40,nonono,can not find user
+888888888888,213122443,40,cancan,user is not a coder
+888888888888,213122443,40,hushili,user is not a coder
+888888888888,213122443,32432,cpx,success
+888888888888,213122443,32432,nonono,can not find user
+888888888888,213122443,32432,cancan,user is not a coder
+888888888888,213122443,32432,hushili,user is not a coder
+888888888888,213122443,21453144,cpx,success
+888888888888,213122443,21453144,nonono,can not find user
+888888888888,213122443,21453144,cancan,user is not a coder
+888888888888,213122443,21453144,hushili,user is not a coder
+888888888888,213122443,214545323443,cpx,success
+888888888888,213122443,214545323443,nonono,can not find user
+888888888888,213122443,214545323443,cancan,user is not a coder
+888888888888,213122443,214545323443,hushili,user is not a coder

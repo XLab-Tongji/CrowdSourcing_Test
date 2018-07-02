@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Attach.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.entity</a> &gt; <span class="el_source">Attach.java</span></div><h1>Attach.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
+
+/**附件功能
+ * Created by SHIKUN on 2016/9/29.
+ */
+@Entity
+@Table(name=&quot;Attach&quot;)
+<span class="fc" id="L14">public class Attach {</span>
+    @Id
+    @GeneratedValue
+    private Long attach_id;
+
+    private String attach_url;
+
+    private String attach_name;
+
+    private Integer size;
+
+    private String attach_type;
+
+    private Date create_time;
+
+    private Date update_time;
+
+   // private Map&lt;String,String&gt; meta_data;
+    private String meta_data;
+    private String username;
+
+    private Boolean is_del;
+
+    public Long getAttach_id() {
+<span class="nc" id="L38">        return attach_id;</span>
+    }
+
+    public void setAttach_id(Long attach_id) {
+<span class="nc" id="L42">        this.attach_id = attach_id;</span>
+<span class="nc" id="L43">    }</span>
+
+    public String getAttach_url() {
+<span class="nc" id="L46">        return attach_url;</span>
+    }
+
+    public void setAttach_url(String attach_url) {
+<span class="nc" id="L50">        this.attach_url = attach_url;</span>
+<span class="nc" id="L51">    }</span>
+
+    public String getAttach_name() {
+<span class="nc" id="L54">        return attach_name;</span>
+    }
+
+    public void setAttach_name(String attach_name) {
+<span class="nc" id="L58">        this.attach_name = attach_name;</span>
+<span class="nc" id="L59">    }</span>
+
+    public Integer getSize() {
+<span class="nc" id="L62">        return size;</span>
+    }
+
+    public void setSize(Integer size) {
+<span class="nc" id="L66">        this.size = size;</span>
+<span class="nc" id="L67">    }</span>
+
+    public String getAttach_type() {
+<span class="nc" id="L70">        return attach_type;</span>
+    }
+
+    public void setAttach_type(String attach_type) {
+<span class="nc" id="L74">        this.attach_type = attach_type;</span>
+<span class="nc" id="L75">    }</span>
+
+    public Date getCreate_time() {
+<span class="nc" id="L78">        return create_time;</span>
+    }
+
+    public void setCreate_time(Date create_time) {
+<span class="nc" id="L82">        this.create_time = create_time;</span>
+<span class="nc" id="L83">    }</span>
+
+    public Date getUpdate_time() {
+<span class="nc" id="L86">        return update_time;</span>
+    }
+
+    public void setUpdate_time(Date update_time) {
+<span class="nc" id="L90">        this.update_time = update_time;</span>
+<span class="nc" id="L91">    }</span>
+
+    public String getMeta_data() {
+<span class="nc" id="L94">        return meta_data;</span>
+    }
+
+    public void setMeta_data(String meta_data) {
+<span class="nc" id="L98">        this.meta_data = meta_data;</span>
+<span class="nc" id="L99">    }</span>
+
+    public String getUsername() {
+<span class="nc" id="L102">        return username;</span>
+    }
+
+    public void setUsername(String username) {
+<span class="nc" id="L106">        this.username = username;</span>
+<span class="nc" id="L107">    }</span>
+
+    public Boolean getIs_del() {
+<span class="nc" id="L110">        return is_del;</span>
+    }
+
+    public void setIs_del(Boolean is_del) {
+<span class="nc" id="L114">        this.is_del = is_del;</span>
+<span class="nc" id="L115">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L119">        return &quot;Attach{&quot; +</span>
+                &quot;attach_id=&quot; + attach_id +
+                &quot;, attach_url='&quot; + attach_url + '\'' +
+                &quot;, attach_name='&quot; + attach_name + '\'' +
+                &quot;, size=&quot; + size +
+                &quot;, attach_type='&quot; + attach_type + '\'' +
+                &quot;, create_time=&quot; + create_time +
+                &quot;, update_time=&quot; + update_time +
+                &quot;, meta_data='&quot; + meta_data + '\'' +
+                &quot;, username=&quot; + username +
+                &quot;, is_del=&quot; + is_del +
+                '}';
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

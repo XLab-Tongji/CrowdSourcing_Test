@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProjectController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.controller</a> &gt; <span class="el_source">ProjectController.java</span></div><h1>ProjectController.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.controller;
+
+
+import com.lab409.crowdingsourcing.entity.Account;
+import com.lab409.crowdingsourcing.entity.DevEnrollInfo;
+import com.lab409.crowdingsourcing.entity.DevInfo;
+import com.lab409.crowdingsourcing.entity.Requirement;
+import com.lab409.crowdingsourcing.repository.AccountRepository;
+import com.lab409.crowdingsourcing.repository.RequirementRepository;
+import com.lab409.crowdingsourcing.service.AccountService;
+import com.lab409.crowdingsourcing.service.FileService;
+import com.lab409.crowdingsourcing.service.ProjectService;
+import com.lab409.crowdingsourcing.util.ResJsonTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+/**
+ * Created by SHIKUN on 2016/9/12.
+ */
+@RestController
+@RequestMapping(value = &quot;api/project&quot;)
+@Transactional
+<span class="fc" id="L27">public class ProjectController {</span>
+
+    @Autowired
+    private ProjectService projectService;
+
+    @Autowired
+    private AccountService accountService;
+
+    @Autowired
+    private RequirementRepository requirementRepository;
+
+    @RequestMapping(value = &quot;/add&quot;, method = RequestMethod.POST)
+    @ResponseBody
+    public ResJsonTemplate addProject(@RequestParam(value = &quot;project_type&quot;) String project_type,
+                                      @RequestParam(value = &quot;cost&quot;) double cost,
+                                      @RequestParam(value = &quot;delivery_cycle&quot;) int delivery_cycle,
+                                      @RequestParam(value = &quot;warranty_cycle&quot;) int warranty_cycle,
+                                      @RequestParam(value = &quot;address&quot;) String address,
+                                      @RequestParam(value = &quot;description&quot;) String description,
+                                      @RequestParam(value = &quot;project_name&quot;) String project_name,
+                                      HttpServletRequest request) {
+<span class="nc" id="L48">        Account account = accountService.getAccount(request);</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        if (account == null) {</span>
+<span class="nc" id="L50">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;,&quot;unauthorized&quot;);</span>
+        }
+<span class="nc" id="L52">        String username = account.getUsername();</span>
+<span class="nc" id="L53">        return projectService.addProject(cost, delivery_cycle, warranty_cycle, address, description, username, project_type, project_name);</span>
+    }
+
+    @RequestMapping(value = &quot;/all&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public ResJsonTemplate searchproject() {
+
+<span class="nc" id="L60">        return projectService.getAllproject();</span>
+    }
+
+
+    @RequestMapping(value = &quot;/develop/enroll&quot;, method = RequestMethod.POST)
+    @ResponseBody
+    public ResJsonTemplate addDevenrollInfo(@RequestBody DevEnrollInfo devEnrollInfo) {
+<span class="nc" id="L67">        Requirement requirement = requirementRepository.findById(devEnrollInfo.getProjectId());</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        if( requirement == null){</span>
+<span class="nc" id="L69">            return new ResJsonTemplate&lt;&gt;(&quot;400&quot;,&quot;无列表&quot;);</span>
+        }
+<span class="nc" id="L71">        devEnrollInfo.setProjectId(requirement.getProjectId());</span>
+<span class="nc" id="L72">        return projectService.addEnrollInfo(devEnrollInfo);</span>
+    }
+
+    @RequestMapping(value = &quot;/develop/enroll/cancel&quot;, method = RequestMethod.DELETE)
+    @ResponseBody
+    public ResJsonTemplate deleteEnrollInfo(@RequestParam(value = &quot;dev_username&quot;) String dev_username,
+                                            @RequestParam(value = &quot;enroll_project_id&quot;) Long enroll_project_id) {
+<span class="nc" id="L79">        return projectService.deleteEnrollInfo(dev_username, enroll_project_id);</span>
+
+    }
+
+    @RequestMapping(value = &quot;/develop/enroll/count/{id}&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public ResJsonTemplate getProjectEnrollcount(@PathVariable Long id) {
+<span class="nc" id="L86">        return projectService.getEnrollCountByProjectId(id);</span>
+
+    }
+
+    @RequestMapping(value = &quot;/develop/enroll/list/{username}&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public ResJsonTemplate getEnrolledProjectbyUsername(@PathVariable String username) {
+
+<span class="nc" id="L94">        return projectService.getEnrollListByDevUsername(username);</span>
+    }
+
+
+    @RequestMapping(value = &quot;/all/{username}&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public ResJsonTemplate getProjectListper(@PathVariable String username) {
+
+<span class="nc" id="L102">        return projectService.getProjectListbyusername(username);</span>
+
+    }
+
+    @RequestMapping(value = &quot;/list/{user}/{id}&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public ResJsonTemplate getProjectListbyId(@PathVariable String user, @PathVariable Long id) {
+<span class="nc" id="L109">        return projectService.getProjectDetailbyUsernameId(user, id);</span>
+    }
+
+
+    @RequestMapping(value = &quot;/list/{id}&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public ResJsonTemplate getProjectListOnlyId(@PathVariable Long id) {
+<span class="nc" id="L116">        return projectService.getProjectDetailByProjectId(id);</span>
+
+    }
+
+
+    @RequestMapping(value = &quot;/develop/confirm&quot;, method = RequestMethod.POST)
+    @ResponseBody
+    public ResJsonTemplate confirmProject(@RequestBody DevInfo devInfo) {
+
+<span class="nc" id="L125">        return projectService.confirmDevelop(devInfo);</span>
+
+    }
+
+
+    @RequestMapping(value = &quot;/develop/project/{id}&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public ResJsonTemplate getDevelopmember(@PathVariable Long id) {
+
+<span class="nc" id="L134">        return projectService.getDeveloperCountbyProjectId(id);</span>
+
+    }
+
+
+    @RequestMapping(value = &quot;/develop/confirm/member&quot;, method = RequestMethod.POST)
+    @ResponseBody
+    public ResJsonTemplate confirmProjectmember(@RequestBody List&lt;DevInfo&gt; devInfos) {
+
+<span class="nc" id="L143">        return projectService.confirmDevelopMember(devInfos);</span>
+
+    }
+
+
+    @RequestMapping(value = &quot;/develop/list/{username}&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public ResJsonTemplate getDevelopingProjectInfo(@PathVariable String username) {
+
+<span class="nc" id="L152">        return projectService.getDevProjectListbyDevelopUsername(username);</span>
+
+    }
+
+    @RequestMapping(value = &quot;/develop/enroll/member/{project_id}&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public ResJsonTemplate getEnrollMemeberbyProjectId(@PathVariable Long project_id) {
+<span class="nc" id="L159">        return projectService.getDevelopUsernameListByProjectId(project_id);</span>
+
+    }
+
+    @RequestMapping(value = &quot;/develop/enroll/member/detail/{project_id}&quot;, method = RequestMethod.GET)
+    @ResponseBody
+    public ResJsonTemplate getEnrollMemberDetailbyProjectID(@PathVariable Long project_id) {
+<span class="nc" id="L166">        return projectService.getDevelopDetailByProjectId(project_id);</span>
+    }
+
+
+    @RequestMapping(value = &quot;/page/{pageNumber}&quot;, method = RequestMethod.GET)
+    public ResJsonTemplate getAllProjectByPageNumber(@PathVariable int pageNumber) {
+
+<span class="nc" id="L173">        return projectService.getProjectListbyPageNumber(pageNumber, 10);</span>
+
+    }
+
+
+    @RequestMapping(value = &quot;/page/{pageSize}/{pageNumber}&quot;, method = RequestMethod.GET)
+    public ResJsonTemplate getAllProjectByPageSizeAndPageNumber(@PathVariable int pageSize, @PathVariable int pageNumber) {
+<span class="nc" id="L180">        return projectService.getProjectListbyPageNumber(pageNumber, pageSize);</span>
+    }
+
+
+}
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

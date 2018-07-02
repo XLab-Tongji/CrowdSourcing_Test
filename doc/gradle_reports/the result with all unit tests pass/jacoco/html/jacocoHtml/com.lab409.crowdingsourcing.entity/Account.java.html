@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Account.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.entity</a> &gt; <span class="el_source">Account.java</span></div><h1>Account.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.entity;
+
+import javax.persistence.*;
+import java.util.Date;
+
+/**
+ * Created by SHIKUN on 2016/9/29.
+ */
+
+/**
+ * Account与数据库ACCOUT映射
+ */
+@Entity
+@Table(name = &quot;Account&quot;)
+public class Account {
+
+    @Id
+    @Column(nullable = false)
+    @GeneratedValue
+    private Long account_id;
+    @Column(unique = true)
+    private String username;
+    private String password;
+    private String ext_params;
+
+    private String name;
+
+    private String icon;
+
+    @Column(unique = true)
+    private String email;
+
+    private Date create_time;
+
+    private Date update_time;
+
+
+    private String mobile;
+
+    private Long dev_id;
+
+    private Long role_id;
+    private Long info_id;
+<span class="fc" id="L44">    public Account() {</span>
+
+<span class="fc" id="L46">    }</span>
+
+    public Long getInfo_id()
+    {
+<span class="nc" id="L50">        return info_id;</span>
+    }
+    public void setInfo_id(Long i)
+    {
+<span class="nc" id="L54">        info_id = i;</span>
+<span class="nc" id="L55">    }</span>
+    public Long getAccount_id() {
+<span class="fc" id="L57">        return account_id;</span>
+    }
+
+    public void setAccount_id(Long account_id) {
+<span class="nc" id="L61">        this.account_id = account_id;</span>
+<span class="nc" id="L62">    }</span>
+
+    public String getUsername() {
+<span class="nc" id="L65">        return username;</span>
+    }
+
+    public void setUsername(String username) {
+<span class="nc" id="L69">        this.username = username;</span>
+<span class="nc" id="L70">    }</span>
+
+    public String getPassword() {
+<span class="nc" id="L73">        return password;</span>
+    }
+
+    public void setPassword(String password) {
+<span class="nc" id="L77">        this.password = password;</span>
+<span class="nc" id="L78">    }</span>
+
+    public String getExt_params() {
+<span class="nc" id="L81">        return ext_params;</span>
+    }
+
+    public void setExt_params(String ext_params) {
+<span class="nc" id="L85">        this.ext_params = ext_params;</span>
+<span class="nc" id="L86">    }</span>
+
+    public String getName() {
+<span class="nc" id="L89">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="nc" id="L93">        this.name = name;</span>
+<span class="nc" id="L94">    }</span>
+
+    public String getIcon() {
+<span class="nc" id="L97">        return icon;</span>
+    }
+
+    public void setIcon(String icon) {
+<span class="nc" id="L101">        this.icon = icon;</span>
+<span class="nc" id="L102">    }</span>
+
+    public String getEmail() {
+<span class="nc" id="L105">        return email;</span>
+    }
+
+    public void setEmail(String email) {
+<span class="nc" id="L109">        this.email = email;</span>
+<span class="nc" id="L110">    }</span>
+
+    public Date getCreate_time() {
+<span class="nc" id="L113">        return create_time;</span>
+    }
+
+    public void setCreate_time(Date create_time) {
+<span class="nc" id="L117">        this.create_time = create_time;</span>
+<span class="nc" id="L118">    }</span>
+
+    public Date getUpdate_time() {
+<span class="nc" id="L121">        return update_time;</span>
+    }
+
+    public void setUpdate_time(Date update_time) {
+<span class="nc" id="L125">        this.update_time = update_time;</span>
+<span class="nc" id="L126">    }</span>
+
+    public String getMobile() {
+<span class="nc" id="L129">        return mobile;</span>
+    }
+
+    public void setMobile(String mobile) {
+<span class="nc" id="L133">        this.mobile = mobile;</span>
+<span class="nc" id="L134">    }</span>
+
+    public Long getDev_id() {
+<span class="nc" id="L137">        return dev_id;</span>
+    }
+
+    public void setDev_id(Long dev_id) {
+<span class="nc" id="L141">        this.dev_id = dev_id;</span>
+<span class="nc" id="L142">    }</span>
+
+    public Long getRole_id() {
+<span class="nc" id="L145">        return role_id;</span>
+    }
+
+    public void setRole_id(Long role_id) {
+<span class="nc" id="L149">        this.role_id = role_id;</span>
+<span class="nc" id="L150">    }</span>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

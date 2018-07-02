@@ -1,0 +1,13 @@
+id,username,expectation
+10000,cpx,success
+10000,nonono,can not find user
+10000,cancan,user has not created project
+10000,hushili,user has not created project
+214314,cpx,wrong id
+214314,nonono,wrong id
+214314,cancan,wrong id
+214314,hushili,wrong id
+289327,cpx,wrong id
+289327,nonono,wrong id
+289327,cancan,wrong id
+289327,hushili,wrong id

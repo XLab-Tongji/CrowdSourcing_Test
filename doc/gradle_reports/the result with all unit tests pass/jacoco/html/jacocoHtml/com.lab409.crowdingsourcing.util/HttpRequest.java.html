@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HttpRequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.util</a> &gt; <span class="el_source">HttpRequest.java</span></div><h1>HttpRequest.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.util;
+
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Map;
+
+/**
+ * Created by Ni on 2016/11/2.
+ */
+
+public class HttpRequest {
+    String url;
+    URL fullUrl;
+    HttpURLConnection connection;
+
+<span class="nc" id="L18">    public HttpRequest(String u) throws MalformedURLException, IOException {</span>
+<span class="nc" id="L19">        url = u;</span>
+<span class="nc" id="L20">    }</span>
+
+    public void setGetParam(Map&lt;String, String&gt; param) throws IOException {
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        if (param != null) {</span>
+<span class="nc" id="L24">            String u = url;</span>
+<span class="nc" id="L25">            u += &quot;?&quot;;</span>
+<span class="nc" id="L26">            int index = 0;</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">            for (String key : param.keySet()) {</span>
+<span class="nc" id="L28">                u += key + &quot;=&quot; + param.get(key);</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">                if (index != param.size() - 1) {</span>
+<span class="nc" id="L30">                    u += &quot;&amp;&quot;;</span>
+                }
+<span class="nc" id="L32">                index++;</span>
+<span class="nc" id="L33">            }</span>
+<span class="nc" id="L34">            url = u;</span>
+        }
+<span class="nc" id="L36">        fullUrl = new URL(url);</span>
+<span class="nc" id="L37">        connection = (HttpURLConnection) fullUrl.openConnection();</span>
+<span class="nc" id="L38">        connection.setRequestMethod(&quot;GET&quot;);</span>
+<span class="nc" id="L39">    }</span>
+
+    public void setPostParam(Map&lt;String, String&gt; param, String token) throws IOException {
+<span class="nc" id="L42">        fullUrl = new URL(url);</span>
+<span class="nc" id="L43">        connection = (HttpURLConnection) fullUrl.openConnection();</span>
+<span class="nc" id="L44">        connection.setRequestMethod(&quot;POST&quot;);</span>
+
+<span class="nc" id="L46">        connection = (HttpURLConnection) fullUrl.openConnection();</span>
+<span class="nc" id="L47">        connection.setDoOutput(true);</span>
+<span class="nc" id="L48">        connection.setDoInput(true);</span>
+
+<span class="nc" id="L50">        connection.setRequestProperty(&quot;Content-Type&quot;, &quot;application/json&quot;);</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        if (token != null) {</span>
+<span class="nc" id="L52">            connection.addRequestProperty(&quot;PRIVATE-TOKEN&quot;, token);</span>
+        }
+<span class="nc" id="L54">        OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream());</span>
+
+//        String params = &quot;{&quot;+
+//                &quot;\&quot;email\&quot;:\&quot;1gqerF@QQ.COM\&quot;,&quot;+
+//                &quot;\&quot;password\&quot;:\&quot;aASDGASD\&quot;,&quot;+
+//                &quot;\&quot;username\&quot;:\&quot;fasffasd\&quot;,&quot;+
+//                &quot;\&quot;name\&quot;:\&quot;c\&quot;&quot;+
+//                &quot;}&quot;;
+
+<span class="nc" id="L63">        String params = &quot;{&quot;;</span>
+<span class="nc" id="L64">        int index = 0;</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        for (String key : param.keySet()) {</span>
+<span class="nc" id="L66">            params += &quot;\&quot;&quot; + key + &quot;\&quot;:\&quot;&quot; + param.get(key) + &quot;\&quot;&quot;;</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            if (index != param.size() - 1) {</span>
+<span class="nc" id="L68">                params += &quot;,&quot;;</span>
+            } else {
+<span class="nc" id="L70">                params += &quot;}&quot;;</span>
+            }
+<span class="nc" id="L72">            index++;</span>
+<span class="nc" id="L73">        }</span>
+<span class="nc" id="L74">        System.out.println(params);</span>
+<span class="nc" id="L75">        out.write(params);</span>
+<span class="nc" id="L76">        out.flush();</span>
+<span class="nc" id="L77">        out.close();</span>
+<span class="nc" id="L78">        System.out.println(&quot;test&quot;);</span>
+<span class="nc" id="L79">    }</span>
+
+    public String getResponse() throws IOException {
+<span class="nc" id="L82">        InputStream in = connection.getInputStream();</span>
+<span class="nc" id="L83">        BufferedReader reader = new BufferedReader(new InputStreamReader(in));</span>
+<span class="nc" id="L84">        String strLine, strResponse = &quot;&quot;;</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        while ((strLine = reader.readLine()) != null) {</span>
+<span class="nc" id="L86">            strResponse += strLine + &quot;\n&quot;;</span>
+        }
+<span class="nc" id="L88">        return strResponse;</span>
+    }
+
+    public int getResponseCode() throws IOException {
+<span class="nc" id="L92">        return connection.getResponseCode();</span>
+    }
+
+    public int getGitlabId() throws IOException {
+<span class="nc" id="L96">        String temp = getResponse();</span>
+<span class="nc" id="L97">        int index = temp.indexOf(&quot;\&quot;id\&quot;:&quot;);</span>
+<span class="nc" id="L98">        String number = &quot;&quot;;</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">        while (temp.charAt(index + 5) != ',') {</span>
+<span class="nc" id="L100">            number += temp.charAt(index + 5);</span>
+<span class="nc" id="L101">            index++;</span>
+        }
+<span class="nc" id="L103">        return Integer.valueOf(number);</span>
+    }
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

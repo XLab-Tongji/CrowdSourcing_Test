@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DateUtil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.util</a> &gt; <span class="el_source">DateUtil.java</span></div><h1>DateUtil.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.util;
+
+
+import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+/**
+ * Created by SHIKUN on 2016/10/9.
+ */
+@Service
+<span class="fc" id="L14">public class DateUtil {</span>
+<span class="fc" id="L15">    public SimpleDateFormat df = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
+
+    /*
+    获取系统当前时间
+     */
+    public String getNowTime() {
+
+<span class="nc" id="L22">        return df.format(new Date());</span>
+    }
+
+    /*
+    设置过期时间,当前时间加分钟数
+     */
+    public String setExpire(int minute) {
+
+<span class="nc" id="L30">        Long total = System.currentTimeMillis();</span>
+<span class="nc" id="L31">        Long result = total + minute * 60 * 1000;</span>
+<span class="nc" id="L32">        return df.format(new Date(result));</span>
+
+    }
+
+    /*
+    字符转日期格式至timestamp
+     */
+    public Date Str2Date(String date) {
+<span class="nc" id="L40">        Timestamp result = null;</span>
+        try {
+<span class="nc" id="L42">            result = Timestamp.valueOf(date);</span>
+
+<span class="nc" id="L44">        } catch (Exception ex) {</span>
+<span class="nc" id="L45">            ex.printStackTrace();</span>
+
+<span class="nc" id="L47">        }</span>
+<span class="nc" id="L48">        return result;</span>
+    }
+
+    /*
+    比较时间大小
+     */
+    public boolean check(Date date,int minute) {
+<span class="nc" id="L55">        boolean status = false;</span>
+<span class="nc" id="L56">        Long setTime = date.getTime();</span>
+<span class="nc" id="L57">        Long nowTime = System.currentTimeMillis();</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if (nowTime &lt; setTime) {</span>
+
+<span class="nc" id="L60">            status = true;</span>
+        }
+<span class="nc" id="L62">        return status;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

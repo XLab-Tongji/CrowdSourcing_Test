@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SimpleProjectDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.dto</a> &gt; <span class="el_source">SimpleProjectDto.java</span></div><h1>SimpleProjectDto.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.dto;
+
+public class SimpleProjectDto {
+
+    private Long project_id;
+    private String project_name;
+    private String project_type;
+    private int project_state;
+
+<span class="nc" id="L10">    public SimpleProjectDto(Long project_id, String project_name, String project_type, int project_state) {</span>
+<span class="nc" id="L11">        this.project_id = project_id;</span>
+<span class="nc" id="L12">        this.project_name = project_name;</span>
+<span class="nc" id="L13">        this.project_type = project_type;</span>
+<span class="nc" id="L14">        this.project_state = project_state;</span>
+<span class="nc" id="L15">    }</span>
+
+    public int getProject_state() {
+<span class="nc" id="L18">        return project_state;</span>
+    }
+
+    public void setProject_state(int project_state) {
+<span class="nc" id="L22">        this.project_state = project_state;</span>
+<span class="nc" id="L23">    }</span>
+
+    public String getProject_type() {
+<span class="nc" id="L26">        return project_type;</span>
+    }
+
+    public void setProject_type(String project_type) {
+<span class="nc" id="L30">        this.project_type = project_type;</span>
+<span class="nc" id="L31">    }</span>
+
+    public String getProject_name() {
+<span class="nc" id="L34">        return project_name;</span>
+    }
+
+    public void setProject_name(String project_name) {
+<span class="nc" id="L38">        this.project_name = project_name;</span>
+<span class="nc" id="L39">    }</span>
+
+    public Long getProject_id() {
+<span class="nc" id="L42">        return project_id;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L47">        return &quot;project id: &quot; + this.project_id + &quot; , project name: &quot; + this.project_name</span>
+                + &quot; , project type: &quot; + this.project_type + &quot; , project state: &quot; + this.project_state;
+    }
+
+    public void setProject_id(Long project_id) {
+<span class="nc" id="L52">        this.project_id = project_id;</span>
+<span class="nc" id="L53">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RedisConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.config</a> &gt; <span class="el_source">RedisConfig.java</span></div><h1>RedisConfig.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.config;
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CachingConfigurerSupport;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.interceptor.KeyGenerator;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+
+import java.lang.reflect.Method;
+
+@Configuration
+@EnableCaching
+<span class="fc" id="L22">public class RedisConfig extends CachingConfigurerSupport {</span>
+
+    @Override
+    @Bean
+    public KeyGenerator keyGenerator() {
+<span class="fc" id="L27">        return new KeyGenerator() {</span>
+            @Override
+            public Object generate(Object target, Method method, Object... params) {
+<span class="nc" id="L30">                StringBuilder sb = new StringBuilder();</span>
+<span class="nc" id="L31">                sb.append(target.getClass().getName());</span>
+<span class="nc" id="L32">                sb.append(method.getName());</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">                for (Object obj : params) {</span>
+<span class="nc" id="L34">                    sb.append(obj.toString());</span>
+                }
+<span class="nc" id="L36">                return sb.toString();</span>
+            }
+        };
+    }
+
+    @SuppressWarnings(&quot;rawtypes&quot;)
+    @Bean
+    public CacheManager cacheManager(RedisTemplate redisTemplate) {
+<span class="fc" id="L44">        RedisCacheManager rcm = new RedisCacheManager(redisTemplate);</span>
+//        设置缓存过期时间,单位为秒
+<span class="fc" id="L46">        rcm.setDefaultExpiration(60 * 30);</span>
+<span class="fc" id="L47">        return rcm;</span>
+    }
+
+    @Bean
+    public RedisTemplate&lt;String, String&gt; redisTemplate(RedisConnectionFactory factory) {
+<span class="fc" id="L52">        StringRedisTemplate template = new StringRedisTemplate(factory);</span>
+<span class="fc" id="L53">        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);</span>
+<span class="fc" id="L54">        ObjectMapper om = new ObjectMapper();</span>
+<span class="fc" id="L55">        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);</span>
+<span class="fc" id="L56">        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);</span>
+<span class="fc" id="L57">        jackson2JsonRedisSerializer.setObjectMapper(om);</span>
+<span class="fc" id="L58">        template.setValueSerializer(jackson2JsonRedisSerializer);</span>
+<span class="fc" id="L59">        template.afterPropertiesSet();</span>
+<span class="fc" id="L60">        return template;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

@@ -1,0 +1,49 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,ProjectExperience,49,3,0,0,21,1,14,1,14,1
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,AccountLogin,149,3,0,0,37,1,20,1,20,1
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,Project,209,3,0,0,53,2,30,1,30,1
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,DevEnrollInfo,66,3,0,0,18,2,10,1,10,1
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,DevInfoPK,49,0,8,0,14,0,12,0,8,0
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,DevInfo,71,0,0,0,18,0,10,0,10,0
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,Attach,135,3,0,0,31,1,21,1,21,1
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,Role,23,0,0,0,10,0,5,0,5,0
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,Requirement,77,6,0,0,33,2,22,1,22,1
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,Developer,90,3,0,0,20,1,14,1,14,1
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,Account,88,6,0,0,38,3,25,2,25,2
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,UserInfoDetail,35,3,0,0,15,1,10,1,10,1
+CrowdingSourcing,com.lab409.crowdingsourcing.entity,MartGitConnection,23,0,0,0,10,0,5,0,5,0
+CrowdingSourcing,com.lab409.crowdingsourcing.service.impl,AccountServiceImpl,326,3,20,0,69,1,15,1,5,1
+CrowdingSourcing,com.lab409.crowdingsourcing.service.impl,UserInfoDetailServiceImpl,18,3,0,0,3,1,1,1,1,1
+CrowdingSourcing,com.lab409.crowdingsourcing.service.impl,ProjectExperienceServiceImpl,116,3,4,0,31,1,5,1,3,1
+CrowdingSourcing,com.lab409.crowdingsourcing.service.impl,RequirementServiceImpl,321,3,22,0,66,1,19,1,8,1
+CrowdingSourcing,com.lab409.crowdingsourcing.service.impl,FileServiceImpl,30,3,0,0,7,1,1,1,1,1
+CrowdingSourcing,com.lab409.crowdingsourcing.service.impl,ProjectServiceImpl,468,3,14,0,84,1,25,1,18,1
+CrowdingSourcing,com.lab409.crowdingsourcing.controller,AccountController,559,3,50,0,110,1,45,1,20,1
+CrowdingSourcing,com.lab409.crowdingsourcing.controller,ProjectController,129,3,4,0,25,1,19,1,17,1
+CrowdingSourcing,com.lab409.crowdingsourcing.controller,FileUploadController,7,3,0,0,1,1,1,1,1,1
+CrowdingSourcing,com.lab409.crowdingsourcing.controller,adminController,13,7,0,0,3,2,2,2,2,2
+CrowdingSourcing,com.lab409.crowdingsourcing.config,RedisConfig,0,51,0,0,0,14,0,4,0,4
+CrowdingSourcing,com.lab409.crowdingsourcing.config,FilterConfig,0,26,0,0,0,7,0,2,0,2
+CrowdingSourcing,com.lab409.crowdingsourcing.config,RedisConfig.new KeyGenerator() {...},39,6,2,0,6,1,2,1,1,1
+CrowdingSourcing,com.lab409.crowdingsourcing.config,CORSConfiguration.new WebMvcConfigurerAdapter() {...},0,32,0,0,0,6,0,2,0,2
+CrowdingSourcing,com.lab409.crowdingsourcing.config,CORSConfiguration,0,8,0,0,0,2,0,2,0,2
+CrowdingSourcing,com.lab409.crowdingsourcing.filter,CorsFilter,26,3,0,0,9,1,3,1,3,1
+CrowdingSourcing,com.lab409.crowdingsourcing.util,DateUtil,60,9,2,0,16,2,5,1,4,1
+CrowdingSourcing,com.lab409.crowdingsourcing.util,ResJsonTemplate,23,0,0,0,10,0,5,0,5,0
+CrowdingSourcing,com.lab409.crowdingsourcing.util,ConvertJson,62,11,0,0,22,3,4,1,4,1
+CrowdingSourcing,com.lab409.crowdingsourcing.util,Paging,33,3,4,0,8,1,4,1,2,1
+CrowdingSourcing,com.lab409.crowdingsourcing.util,FileFunc,157,3,8,0,35,1,6,1,2,1
+CrowdingSourcing,com.lab409.crowdingsourcing.util,ConvertJson.new TypeReference() {...},6,0,0,0,1,0,1,0,1,0
+CrowdingSourcing,com.lab409.crowdingsourcing.util,ConvertJson.new TypeReference() {...},6,0,0,0,1,0,1,0,1,0
+CrowdingSourcing,com.lab409.crowdingsourcing.util,MD5Util,53,0,4,0,14,0,5,0,3,0
+CrowdingSourcing,com.lab409.crowdingsourcing.util,HttpRequest,285,0,16,0,57,0,14,0,6,0
+CrowdingSourcing,com.lab409.crowdingsourcing,CrowdingSourcingApplication,5,3,0,0,2,1,1,1,1,1
+CrowdingSourcing,com.lab409.crowdingsourcing.dto,SimpleRequirementDto,28,3,0,0,12,1,8,1,8,1
+CrowdingSourcing,com.lab409.crowdingsourcing.dto,ReuireAndDeveloperDto,17,0,0,0,7,0,5,0,5,0
+CrowdingSourcing,com.lab409.crowdingsourcing.dto,LoginAccountDto,41,3,0,0,10,1,7,1,7,1
+CrowdingSourcing,com.lab409.crowdingsourcing.dto,SimpleAccountDto,21,3,0,0,9,1,6,1,6,1
+CrowdingSourcing,com.lab409.crowdingsourcing.dto,AccountAndExperience,53,0,0,0,22,0,11,0,11,0
+CrowdingSourcing,com.lab409.crowdingsourcing.dto,SimpleProjectDto,68,0,0,0,19,0,10,0,10,0
+CrowdingSourcing,com.lab409.crowdingsourcing.dto,DeveloperDto,39,0,0,0,16,0,7,0,7,0
+CrowdingSourcing,com.lab409.crowdingsourcing.dto,AccountDetail,35,3,0,0,15,1,10,1,10,1
+CrowdingSourcing,com.lab409.crowdingsourcing.dto,AccountInfo,29,3,0,0,7,1,5,1,5,1

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RequirementServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CrowdingSourcing</a> &gt; <a href="index.source.html" class="el_package">com.lab409.crowdingsourcing.service.impl</a> &gt; <span class="el_source">RequirementServiceImpl.java</span></div><h1>RequirementServiceImpl.java</h1><pre class="source lang-java linenums">package com.lab409.crowdingsourcing.service.impl;
+
+import com.lab409.crowdingsourcing.dto.SimpleRequirementDto;
+import com.lab409.crowdingsourcing.entity.Account;
+import com.lab409.crowdingsourcing.entity.DevEnrollInfo;
+import com.lab409.crowdingsourcing.entity.Requirement;
+import com.lab409.crowdingsourcing.repository.DevEnrollInfoRepository;
+import com.lab409.crowdingsourcing.repository.RequirementRepository;
+import com.lab409.crowdingsourcing.service.RequirementService;
+import com.lab409.crowdingsourcing.util.ResJsonTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * Created by jieping on 2017-05-24.
+ */
+@Service
+<span class="fc" id="L25">public class RequirementServiceImpl implements RequirementService {</span>
+    @Autowired
+    private RequirementRepository requirementRepository;
+    @Autowired
+    private DevEnrollInfoRepository devEnrollInfoRepository;
+
+    @Override
+    public ResJsonTemplate deleteRequirement(Long id){
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        if (!requirementRepository.exists(id)) {</span>
+<span class="nc" id="L34">            return new ResJsonTemplate&lt;&gt;(&quot;400&quot;, &quot;删除失败&quot;);</span>
+        }
+<span class="nc" id="L36">        Requirement target = requirementRepository.findById(id);</span>
+<span class="nc" id="L37">        requirementRepository.delete(target);</span>
+        //    requirementRepository.deleteById(id);
+<span class="nc" id="L39">        return new ResJsonTemplate&lt;&gt;(&quot;200&quot;, &quot;删除成功&quot;);</span>
+    }
+    @Override
+    public ResJsonTemplate addRequirement(Account account, String requirement_name,
+                                          String requirement_type, int need_manager,
+                                          Date start_time, Date end_time,
+                                          String requirement_detail, MultipartFile file,
+                                          int project_id) throws IOException {
+<span class="nc" id="L47">        Requirement requirement = new Requirement();</span>
+<span class="nc" id="L48">        requirement.setCreatorId(account.getAccount_id());</span>
+<span class="nc" id="L49">        requirement.setrequirementName(requirement_name);</span>
+<span class="nc" id="L50">        requirement.setrequirementType(requirement_type);</span>
+<span class="nc" id="L51">        requirement.setRequirementDetail(requirement_detail);</span>
+<span class="nc" id="L52">        requirement.setNeedManager(need_manager);</span>
+<span class="nc" id="L53">        requirement.setStartTime(start_time);</span>
+<span class="nc" id="L54">        requirement.setEndTime(end_time);</span>
+
+<span class="nc" id="L56">        requirement.setProjectId((long) project_id);</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        if (file != null) {</span>
+<span class="nc" id="L58">            byte[] data = new byte[file.getInputStream().available()];</span>
+<span class="nc" id="L59">            file.getInputStream().read(data);</span>
+<span class="nc" id="L60">            requirement.setFile(data);</span>
+        }
+<span class="nc" id="L62">        requirementRepository.save(requirement);</span>
+<span class="nc" id="L63">        return new ResJsonTemplate&lt;&gt;(&quot;201&quot;, &quot;创建需求成功&quot;);</span>
+    }
+
+    @Override
+    public ResJsonTemplate getReuirement(Account account) {
+<span class="nc" id="L68">        List&lt;Requirement&gt; requirements = requirementRepository.findByCreatorId(account.getAccount_id());</span>
+<span class="nc" id="L69">        ArrayList&lt;SimpleRequirementDto&gt; simpleRequirements = new ArrayList&lt;SimpleRequirementDto&gt;();</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        for (int i = 0; i &lt; requirements.size(); i++) {</span>
+<span class="nc" id="L71">            SimpleRequirementDto s = new SimpleRequirementDto();</span>
+<span class="nc" id="L72">            s.setRequirement_id(requirements.get(i).getId());</span>
+<span class="nc" id="L73">            s.setRequirement_type(requirements.get(i).getrequirementType());</span>
+<span class="nc" id="L74">            s.setRequirement_name(requirements.get(i).getrequirementName());</span>
+<span class="nc" id="L75">            s.setRequirement_state(requirements.get(i).getRequirementState());</span>
+<span class="nc" id="L76">            simpleRequirements.add(s);</span>
+        }
+<span class="nc" id="L78">        return new ResJsonTemplate&lt;&gt;(&quot;200&quot;, simpleRequirements);</span>
+    }
+
+    @Override
+    public ResJsonTemplate getRequirement() {
+<span class="nc" id="L83">        List&lt;Requirement&gt; requirements = (List&lt;Requirement&gt;) requirementRepository.findAll();</span>
+<span class="nc" id="L84">        return new ResJsonTemplate&lt;&gt;(&quot;200&quot;, requirements);</span>
+    }
+
+    @Override
+    public ResJsonTemplate updateRequirement(Account account, Long reId, String requirement_name,
+                                             String requirement_type, int need_manager, Date start_time,
+                                             Date end_time, String requirement_detail, MultipartFile file,
+                                             int state) throws IOException {
+<span class="nc" id="L92">        Requirement requirement = requirementRepository.findById(reId);</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">        if(requirement==null)</span>
+        {
+<span class="nc" id="L95">            return new ResJsonTemplate&lt;&gt;(&quot;404&quot;, &quot;需求不存在&quot;);</span>
+        }
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        if(!Objects.equals(requirement.getCreatorId(), account.getAccount_id()))</span>
+        {
+<span class="nc" id="L99">            return new ResJsonTemplate&lt;&gt;(&quot;400&quot;, &quot;该需求非该用户创建，无法更新&quot;);</span>
+        }
+<span class="nc" id="L101">        requirement.setrequirementName(requirement_name);</span>
+<span class="nc" id="L102">        requirement.setrequirementType(requirement_type);</span>
+<span class="nc" id="L103">        requirement.setRequirementDetail(requirement_detail);</span>
+<span class="nc" id="L104">        requirement.setNeedManager(need_manager);</span>
+<span class="nc" id="L105">        requirement.setStartTime(start_time);</span>
+<span class="nc" id="L106">        requirement.setEndTime(end_time);</span>
+<span class="nc" id="L107">        requirement.setRequirementState(state);</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">        if (file != null) {</span>
+<span class="nc" id="L109">            byte[] data = new byte[file.getInputStream().available()];</span>
+<span class="nc" id="L110">            file.getInputStream().read(data);</span>
+<span class="nc" id="L111">            requirement.setFile(data);</span>
+        }
+
+<span class="nc" id="L114">        requirementRepository.save(requirement);</span>
+<span class="nc" id="L115">        return new ResJsonTemplate&lt;&gt;(&quot;200&quot;, &quot;更新成功&quot;);</span>
+    }
+
+    @Override
+    public Requirement getRequirement(Long id) {
+<span class="nc" id="L120">        return requirementRepository.findById(id);</span>
+    }
+
+    @Override
+    public ResJsonTemplate addEnrollInfo(DevEnrollInfo devEnrollInfo) {
+<span class="nc" id="L125">        List&lt;DevEnrollInfo&gt; devEnrollInfos = devEnrollInfoRepository.findByUsername(devEnrollInfo.getUsername());</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        for(int i = 0; i&lt;devEnrollInfos.size();i++)</span>
+        {
+<span class="nc bnc" id="L128" title="All 2 branches missed.">            if(devEnrollInfos.get(i).getProjectId()==devEnrollInfo.getProjectId())</span>
+            {
+<span class="nc" id="L130">                return new ResJsonTemplate&lt;&gt;(&quot;401&quot;,&quot;用户已报名该项目&quot;);</span>
+            }
+        }
+<span class="nc" id="L133">        devEnrollInfoRepository.save(devEnrollInfo);</span>
+<span class="nc" id="L134">        return new ResJsonTemplate&lt;&gt;(&quot;200&quot;,&quot;用户报名成功&quot;);</span>
+    }
+
+    @Override
+    public ResJsonTemplate getMyRequirement(Account account) {
+<span class="nc" id="L139">        List&lt;Requirement&gt; result = requirementRepository.findByCreatorId(account.getAccount_id());</span>
+<span class="nc" id="L140">        List&lt;DevEnrollInfo&gt; enrolls = devEnrollInfoRepository.findByUsername(account.getUsername());</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">        if (enrolls == null) {</span>
+<span class="nc" id="L142">            return new ResJsonTemplate&lt;&gt;(&quot;200&quot;,result);</span>
+        }
+<span class="nc bnc" id="L144" title="All 2 branches missed.">        for(int i = 0;i&lt;enrolls.size();i++)</span>
+        {
+<span class="nc" id="L146">            Requirement temp = requirementRepository.findById(enrolls.get(i).getProjectId());</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">            if(!result.contains(temp))</span>
+            {
+<span class="nc" id="L149">                result.add(temp);</span>
+            }
+        }
+<span class="nc" id="L152">        return new ResJsonTemplate&lt;&gt;(&quot;200&quot;,result);</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>
