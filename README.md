@@ -1,11 +1,15 @@
 # CrowdSourcing_Test
-众包项目组软测
-  这是众包项目组的软测仓库，所有文档和代码都提交在这个仓库里。
 
-  文档：doc目录，流程构建文档，前端测试文档，后端测试文档
+  本项目是基于众包平台项目前后端构建的测试项目，包括DevOps的CI&CD的Jenkins探索。
+  
+## Index
 
-  前端测试：mart-test-vue 目录，基于Vue的众包平台前端代码，以及测试代码
+  ./doc: 和本次测试项目有关的全部文档，包括：流程构建文档，前端测试文档，后端测试文档
 
-  后端测试：mart-test-spring 目录，基于Spring Boot的后端代码，以及测试代码
+  ./mart-test-vue: 基于Vue众包平台前端代码重构的测试项目代码
 
-  测试报告展示：unit-test-report 目录，测试报告的web渲染页面
+  ./mart-test-spring: 基于Spring Boot众包平台后端代码重构的测试项目代码
+  
+  ./e2e-test-selenium-robotframework： 使用Selenium构建前端E2E测试项目代码
+
+  ./unit-test-report: 整合前端及后端单元测试结果的可视化界面，支持测试结果的即时更新
