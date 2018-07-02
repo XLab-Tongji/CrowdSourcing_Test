@@ -1,0 +1,151 @@
+#main-container {
+    padding-left: 220px;
+    margin-top: 60px;
+    padding-right: 10px;
+    width: 100%;
+	position: absolute;
+	z-index: -1;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+/*White Panel */
+.white-panel {
+	text-align: center;
+	background: #ffffff;
+	
+}
+.white-panel .white-header {
+	background: #0eb366;
+	padding: 3px;
+	margin-bottom: 15px;
+	color: #ffffff;
+}
+
+/*Panel Size*/
+.pn {
+	height: fit-content;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pn:hover {
+	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Specific Conf for Donut Charts*/
+.donut-chart p {
+	margin-top: 5px;
+	font-weight: 700;
+	margin-left: 15px;
+}
+.donut-chart h2 {
+	font-weight: 900;
+	color: #FF6B6B;
+	font-size: 38px;
+}
+
+table {
+	width: 100%;
+    height: 80%;
+    max-width: 100%;
+    /* margin-bottom: 20px; */
+}
+
+.output {
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+	padding-left: 20px;
+	padding-top: 5px;
+	text-align: left;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+.steps{
+	display: block;
+	min-width: 15%;
+}
+
+.steps label{
+	background: #393D40;
+	height: 65px;
+	line-height: 65px;
+	width: 100%;
+	display: block;
+	border-bottom: 1px solid #44494e;
+	color: #889199;
+	font-weight: 900;
+	font-size: 11px;
+	letter-spacing: 1px;
+	text-indent: 25px;
+	cursor: pointer;
+	transition: all 0.7s ease;
+	margin: 0px;
+  }
+
+  .steps label:before{
+	content:"";
+	width: 12px;
+	height: 12px;
+	display: block;
+	position: absolute;
+	margin: 5px 0px 0px 18px;
+	border-radius: 100%;
+	transition: border 0.7s ease
+  }
+  .steps label:hover{
+	background: #2B2E30;
+	color: #46b7e5
+  }
+
+#tabs {
+	width: 100%;
+	margin-left: 20px;
+}
+
+ul.tabLinks {
+    padding-left: 0;
+    padding-top: 10px;
+    overflow: auto;
+    min-width: 800px;
+    width: auto !important;
+    width: 800px;
+}
+
+ul.tabLinks li {
+    float: left;
+    height: 100%;
+    list-style: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    margin-right: 25px;
+}
+
+ul.tabLinks li:hover {
+    background-color: #fafafa;
+}
+
+ul.tabLinks li.selected {
+    background-color: #c5f0f5;
+    border-color: #c5f0f5;
+}
+
+span.code {
+	display: inline-block;
+	overflow-x: auto;
+	min-width: 100%;
+}
+span.code pre {
+	word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+
