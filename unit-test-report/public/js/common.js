@@ -77,7 +77,7 @@ var Script = function () {
             var failure = 0;
             if (testcase.state == 'Fail') {
                 failure = 1;
-                $('tbody#state_tbody').append($("<tr><td><a href=''>" + testcase.name +
+                $('tbody#state_tbody').append($("<tr ><td><a href=''>" + testcase.name +
                 "</a></td><td>" + failure +
                 "</td><td>0</td><td>" + testcase.time +
                 "s</td><td><span class='label label-warning label-mini'>" +

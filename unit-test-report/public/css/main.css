@@ -9,6 +9,29 @@ body {
     overflow-x: hidden;
 }
 
+.nmsl{
+    display: block;
+    width: 100%;
+}
+.nmsl tr{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+.nmsl tr td{
+    display: block;
+    /* width: 20%; */
+}
+
+.nmsl a{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
 ul li {
     list-style: none;
 }
