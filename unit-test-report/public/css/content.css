@@ -19,7 +19,7 @@
 	
 }
 .white-panel .white-header {
-	background: #0eb366;
+	background: #3a8ee6;
 	padding: 3px;
 	margin-bottom: 15px;
 	color: #ffffff;
@@ -83,6 +83,10 @@ table {
 	cursor: pointer;
 	transition: all 0.7s ease;
 	margin: 0px;
+	
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .steps label:before{

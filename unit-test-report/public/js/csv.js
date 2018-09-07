@@ -1,4 +1,4 @@
-var csvUrl = '../reports/jacocoCsv.csv';
+var csvUrl = 'http://106.14.121.251:30009/reports/jacoco/csv/jacocoCsv.csv';
 
 function getCsv(){
     $.ajax({
@@ -9,7 +9,10 @@ function getCsv(){
         cache: false,
         async: false,
         error: function (err) {
-            alert("加载csv文档出错");
+                //var tbody = document.getElementById("coverage_body");
+                //var tr = document.createElement("tr");
+                //tr.innerHTML = "Test Failed, No Coverage.";
+                //tbody.appendChild(tr);            
         },
         success: function (result) {
             Papa.parse(result, {

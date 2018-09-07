@@ -58,21 +58,26 @@
                 <li style="margin-top: 25px;">
                     <a class="active" href="index.html">
                         <i class="fa fa-dashboard"></i>
-                        <span>Junit Pass Test</span>
+                        <!-- <span>Junit Pass Test</span> -->
+                        <span>Junit Test</span>
                     </a>
                 </li>
+                <!-- 
                 <li class="sub-menu">
                     <a href="fail.html">
                         <i class="fa fa-tasks"></i>
                         <span>Junit Fail Test</span>
                     </a>
                 </li>
+                -->
+                <!--
                 <li class="sub-menu">
                     <a href="vue.html">
                         <i class="fa fa-desktop"></i>
                         <span>Vue Unit Test</span>
                     </a>
                 </li>
+                -->
             </ul>
             <!-- sidebar menu end-->
         </div>
@@ -170,11 +175,59 @@
     
     <script type="text/javascript">
         function getUrl() {
-            var url = [];
-            url.push('http://106.14.121.251:30009/reports/tests/xml/junitTestXml/TEST-com.lab409.crowdingsourcing.ProjectMock.xml');
-            url.push('http://106.14.121.251:30009/reports/tests/xml/junitTestXml/TEST-com.lab409.crowdingsourcing.ProjectServiceTest.xml');
-            url.push('http://106.14.121.251:30009/reports/tests/xml/junitTestXml/TEST-com.lab409.crowdingsourcing.RedisTest.xml');
-            return url;
+            var url_s = [];
+            var url_f = [];
+            //success
+            url_s.push('http://106.14.121.251:30009/reports/tests/xml/junitTestXml/TEST-com.lab409.crowdingsourcing.ProjectMock.xml');
+            url_s.push('http://106.14.121.251:30009/reports/tests/xml/junitTestXml/TEST-com.lab409.crowdingsourcing.ProjectServiceTest.xml');
+            url_s.push('http://106.14.121.251:30009/reports/tests/xml/junitTestXml/TEST-com.lab409.crowdingsourcing.RedisTest.xml');
+
+            //fail
+            url_f.push('http://106.14.121.251:30009/junitTestXml/TEST-com.lab409.crowdingsourcing.AccountServiceTest.xml');
+            url_f.push('http://106.14.121.251:30009/junitTestXml/TEST-com.lab409.crowdingsourcing.CrowdingSourcingApplicationTests.xml');
+            url_f.push('http://106.14.121.251:30009/junitTestXml/TEST-com.lab409.crowdingsourcing.ProjectServiceTest.xml');
+            url_f.push('http://106.14.121.251:30009/junitTestXml/TEST-com.lab409.crowdingsourcing.RedisTest.xml');
+
+            time_s = null;
+            time_f = null;
+            $.ajax({
+                url: url_s[0],
+                type: 'GET',
+                dataType: 'xml',
+                timeout: 1000,
+                cache: false,
+                async: false,
+                error: function (xml) {
+                    alert("验证xml文档出错");
+                },
+                success: function (xml) {
+                    $(xml).find("testsuite").each(function (i) {
+                        time_s = $(this).attr("timestamp");
+                    });
+                }
+            });
+
+            $.ajax({
+                url: url_f[0],
+                type: 'GET',
+                dataType: 'xml',
+                timeout: 1000,
+                cache: false,
+                async: false,
+                error: function (xml) {
+                    alert("验证xml文档出错");
+                },
+                success: function (xml) {
+                    $(xml).find("testsuite").each(function (i) {
+                        time_f = $(this).attr("timestamp");
+                    });
+                }
+            });
+
+            if (time_s >= time_f)
+                return url_s;
+            else
+                return url_f;
         }
     </script>
     <script src="js/data.js"></script>
